@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tagalong_id: 1
+  owner_stars: 1
+  accuracy_of_event_stars: 1
+
+two:
+  tagalong_id: 1
+  owner_stars: 1
+  accuracy_of_event_stars: 1

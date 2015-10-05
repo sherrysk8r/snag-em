@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  owner_id: 1
+  title: MyString
+  topic: MyString
+  date: 2015-10-05
+  start_time: 2015-10-05 11:19:38
+  expected_duration: 2015-10-05 11:19:38
+  details: MyText
+  cancelled: false
+  estimated_difficulty: 1
+
+two:
+  owner_id: 1
+  title: MyString
+  topic: MyString
+  date: 2015-10-05
+  start_time: 2015-10-05 11:19:38
+  expected_duration: 2015-10-05 11:19:38
+  details: MyText
+  cancelled: false
+  estimated_difficulty: 1

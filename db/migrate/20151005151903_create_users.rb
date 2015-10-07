@@ -10,7 +10,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :state
       t.text :about_me
       t.date :date_of_birth
-      t.string :password_hash
+      t.string :password_digest
       t.boolean :active
 
       t.timestamps null: false

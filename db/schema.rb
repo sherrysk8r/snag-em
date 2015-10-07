@@ -53,10 +53,10 @@ ActiveRecord::Schema.define(version: 20151005152016) do
     t.string   "state"
     t.text     "about_me"
     t.date     "date_of_birth"
-    t.string   "password_hash"
+    t.string   "password_digest"
     t.boolean  "active"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end

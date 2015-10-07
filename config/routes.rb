@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :users
-
+  resources :posts
+  
   resources :sessions
   get 'user/edit' => 'users#edit', :as => :edit_current_user
   get 'signup' => 'users#new', :as => :signup

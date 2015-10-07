@@ -1,0 +1,26 @@
+Review your profile:
+
+<h3>
+  <b>Name</b>: <%= @user.proper_name %>
+</h3><br>
+
+<p>
+  <b>Email</b>: <%= mail_to @user.email, @user.email, encode: "javascript" %>
+</p>
+
+<p><b>Current Posts:</b>
+  <% if @user_posts.empty? %>
+    &nbsp;&nbsp;<em>No scheduled workouts at this time</em>
+  <% else %>
+    <ul>
+  		<% @user_posts.each do |post| %>
+  			<li><%= post.title %></li>
+  		<% end %>
+  	</ul>
+  <% end %>
+</p>
+
+
+<p>
+  <b>About Me</b>: <%= @user.about_me %>
+</p>

@@ -28,4 +28,7 @@ class User < ActiveRecord::Base
 	def self.authenticate(email, password)
 	  find_by_email(email).try(:authenticate, password)
 	end
+
+	def perc_cancelled
+	end
 end

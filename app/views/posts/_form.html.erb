@@ -1,0 +1,12 @@
+<%= simple_form_for @post do |f| %>
+  <%= f.input :owner_id %>
+  <%= f.input :title %>
+  <%= f.input :topic %>
+  <%= f.input :date %>
+  <%= f.input :start_time %>
+  <%= f.input :expected_duration %>
+  <%= f.input :details %>
+  <%= f.input :cancelled %>
+  <%= f.input :estimated_difficulty %>
+  <%= f.button :submit %>
+<% end %>

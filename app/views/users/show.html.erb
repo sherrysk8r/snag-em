@@ -1,5 +1,3 @@
-Review your profile:
-
 <h3>
   <b>Name</b>: <%= @user.proper_name %>
 </h3><br>
@@ -8,9 +6,10 @@ Review your profile:
   <b>Email</b>: <%= mail_to @user.email, @user.email, encode: "javascript" %>
 </p>
 
-<p><b>Current Posts:</b>
+<p><b>Upcoming Events:</b>
   <% if @user_posts.empty? %>
-    &nbsp;&nbsp;<em>No scheduled workouts at this time</em>
+    &nbsp;&nbsp;<em>No scheduled workouts at this time.</em> Do you want to schedule one? 
+    <!-- If it's the current user, should have link to ask to schedule an event. -->
   <% else %>
     <ul>
   		<% @user_posts.each do |post| %>

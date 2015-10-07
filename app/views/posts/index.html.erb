@@ -1,1 +1,9 @@
-<h3>All Upcoming Events</h3>
+<h2>All Upcoming Events</h2>
+
+<% @posts.each do |p| %>
+	<div style="border:1px solid black">
+		<h3><%= p.title %></h3>
+		<p><%= p.topic %></p>
+		<p><%= p.date %></p>
+	</div>
+<% end %>

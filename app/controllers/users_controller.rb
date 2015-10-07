@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def show
+    @user_posts = Post.for_owner(@user.id)
+    #@user_tagalongs = @user.tagalongs.title
   end
 
   def new

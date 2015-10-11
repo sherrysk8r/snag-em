@@ -5,5 +5,8 @@
 		<h3><%= p.title %></h3>
 		<p><%= p.topic %></p>
 		<p><%= p.date %></p>
+		<p><%= link_to "View", post_path(p) %></p>
 	</div>
 <% end %>
+
+<%= link_to "Create Post", new_post_path %>

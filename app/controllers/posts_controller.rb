@@ -38,6 +38,18 @@ class PostsController < ApplicationController
     redirect_to posts_url
   end
 
+  # A simple form that is submitted through AJAX. Found on post show
+  def addtagalong
+    @tagalong = Tagalong.new(tagalong_params)
+    @post = Post.find(@tagalong.post_id)
+    if @tagalong.valid?
+      @tagalong.save
+      redirect_to posts_url, notice: 'Tagalong was successfully added.'
+    else
+      format.json { render json: @tagalong.errors, status: :unprocessable_entity }
+    end
+  end
+
   private
     def set_post
       @post = Post.find(params[:id])
@@ -45,5 +57,9 @@ class PostsController < ApplicationController
 
     def post_params
       params.require(:post).permit(:owner_id, :title, :topic, :date, :start_time, :expected_duration, :details, :cancelled, :estimated_difficulty)
+    end
+
+    def tagalong_params
+      params.require(:tagalong).permit(:user_id, :post_id, :showed_up)
     end
 end

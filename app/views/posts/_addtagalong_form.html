@@ -1,7 +1,7 @@
 <p> Sign up to Tagalong! </p>
-<%= simple_form_for(Tagalong.new, :url => posts_path) do |f| %>
+<%= simple_form_for(Tagalong.new, :url => addtagalong_path) do |f| %>
   <%= f.hidden_field :user_id,  value: current_user.id %>
-  <%= f.hidden_field :post_id, value: @post %>
+  <%= f.hidden_field :post_id, value: @post.id %>
   <%= f.hidden_field :showed_up, value: false %>
   <%= f.button :submit %>
 <% end %>

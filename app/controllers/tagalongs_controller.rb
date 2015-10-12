@@ -16,7 +16,7 @@ class TagalongsController < ApplicationController
     def create
 		@tagalong = Tagalong.new
 		if @tagalong.save
-	      redirect_to posts_url, notice: 'Tagalong was successfully added.'
+	      redirect_to posts_path, notice: 'Tagalong was successfully added.'
 	    else
 	      render action: 'new'
 	    end

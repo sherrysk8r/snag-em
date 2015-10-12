@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20151009201037) do
     t.string   "name"
     t.boolean  "private"
     t.string   "domain"
+    t.boolean  "company"
+    t.string   "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -44,5 +44,5 @@ class GroupsController < ApplicationController
     end
 
     def post_params
-      params.require(:group).permit(:private, :domain)
+      params.require(:group).permit(:private, :domain, :company)
 end

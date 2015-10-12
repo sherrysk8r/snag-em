@@ -4,6 +4,8 @@ class CreateGroups < ActiveRecord::Migration
       t.string :name
       t.boolean :private
       t.string :domain
+      t.boolean :company
+      t.string :picture
 
       t.timestamps null: false
     end

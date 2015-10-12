@@ -1,0 +1,24 @@
+ <h2> Details: </h2>
+  <p> Post: <%= @post.id %></p> 
+  <p> Owner: <%= @post.owner_id %></p> 
+  <p> Title: <%= @post.title %> </p>
+  <p> Topic: <%= @post.topic %> </p>
+  <p> Date: <%= @post.date %> </p>
+  <p> Start Time: <%= @post.start_time %> </p>
+  <p> Expected Duration: <%= @post.expected_duration %> </p>
+  <p> Details: <%= @post.details %> </p>
+  <p> Cancelled: <%= @post.cancelled %> </p>
+  <p> Estimated Difficulty: <%= @post.estimated_difficulty %> </p>
+
+  <h2> Tagalongs: </h2>
+  <% @post.tagalongs.each do |tagalong| %>
+    <div style="border:1px solid black">
+      <p><%= tagalong.user.first_name %> <%= tagalong.user.last_name%></p>
+    </div>
+  <% end %>
+
+
+<%= render :partial => "addtagalong_form", locals: { post: @post} %>
+
+
+<%= link_to "Back", posts_path %>

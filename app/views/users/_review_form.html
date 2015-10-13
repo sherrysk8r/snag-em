@@ -1,0 +1,7 @@
+<%= simple_form_for(Review.new, :url => addreview_path) do |f| %>
+  <%= f.hidden_field :tagalong_id,  value: tagalong.id%>
+  <%= f.input :owner_stars %>
+  <%= f.input :accuracy_of_event_stars %>
+  <%= f.text_area :review %>
+  <%= f.button :submit %>
+<% end %>

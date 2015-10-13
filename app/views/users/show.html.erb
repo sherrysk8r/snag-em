@@ -6,19 +6,71 @@
   <b>Email</b>: <%= mail_to @user.email, @user.email, encode: "javascript" %>
 </p>
 
-<p><b>Upcoming Events:</b>
-  <% if @user_posts.empty? %>
-    &nbsp;&nbsp;<em>No scheduled workouts at this time.</em> Do you want to schedule one? 
+<p><b>Upcoming Tagalongs:</b>
+  <% if @user_tagalongs.empty? %>
+    &nbsp;&nbsp;<em>No scheduled tagalongs at this time.</em> Do you want to schedule one? 
     <!-- If it's the current user, should have link to ask to schedule an event. -->
   <% else %>
     <ul>
-  		<% @user_posts.each do |post| %>
-  			<li><%= post.title %> " @ " <%= post.date %></li>
+  		<% @user_tagalongs.each do |tagalong| %>
+        <% if tagalong.post.date >= Date.today %>
+  			   <li><%= tagalong.post.title %>  @  <%= tagalong.post.date %> (<%= tagalong.post.start_time %>) </li>
+        <%end %>
   		<% end %>
   	</ul>
   <% end %>
 </p>
 
+<p><b>Past Tagalongs:</b>
+  <% if @user_tagalongs.empty? %>
+    &nbsp;&nbsp;<em>No past workouts at this time.</em>
+  <% else %>
+    <ul>
+      <% @user_tagalongs.each do |tagalong| %>
+          <% if tagalong.post.date < Date.today %>
+            <div style="border:1px solid black">
+              <li><%= tagalong.post.title %>  @  <%= tagalong.post.date %></li>
+              <% if tagalong.review != nil %>
+                <%= render :partial => "show_review", locals:{ tagalong: tagalong} %>
+              <% else %>
+                <%= render :partial => "review_form", locals: { tagalong: tagalong} %>
+              <% end %>
+            </div>
+          <%end %>
+      <% end %>
+    </ul>
+  <% end %>
+</p>
+
+
+<p><b>Upcoming Posts:</b>
+  <% if @user_posts.empty? %>
+    &nbsp;&nbsp;<em>No scheduled workouts at this time.</em> Do you want to schedule one? 
+    <!-- If it's the current user, should have link to ask to schedule an event. -->
+  <% else %>
+    <ul>
+      <% @user_posts.each do |post| %>
+        <% if post.date >= Date.today %>
+           <li><%= post.title %>  @  <%= post.date %> (<%= post.start_time %>) </li>
+        <%end %>
+      <% end %>
+    </ul>
+  <% end %>
+</p>
+
+<p><b>Past Events:</b>
+  <% if @user_posts.empty? %>
+    &nbsp;&nbsp;<em>No past workouts at this time.</em>
+  <% else %>
+    <ul>
+      <% @user_posts.each do |post| %>
+        <% if post.date < Date.today %>
+          <li><%= post.title %>  @  <%= post.date %></li>
+        <%end %>
+      <% end %>
+    </ul>
+  <% end %>
+</p>
 
 <p>
   <b>About Me</b>: <%= @user.about_me %>

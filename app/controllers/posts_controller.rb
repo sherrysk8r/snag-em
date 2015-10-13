@@ -17,8 +17,6 @@ class PostsController < ApplicationController
   end
 
   def create
-  	puts "I AM HERE"
-  	puts current_user
   	@post = Post.new(post_params)
   	params[:post][:owner_id] = current_user.id
     if @post.save

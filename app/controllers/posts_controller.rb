@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   end
 
   def new
+  	puts @current_user
     @post = Post.new
   end
 
@@ -16,8 +17,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-
+  	puts "I AM HERE"
+  	puts current_user
+  	@post = Post.new(post_params)
+  	params[:post][:owner_id] = current_user.id
     if @post.save
       redirect_to posts_url, notice: 'Event was successfully created.'
     else

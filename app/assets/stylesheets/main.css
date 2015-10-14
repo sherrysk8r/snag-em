@@ -61,3 +61,12 @@
 .hero .row{
 	padding-top: 20rem;
 }
+
+.workout{
+	border: 1px #D1D1D1 solid;
+}
+
+.row.full-width {
+  width: 100%;
+  max-width: 100%; 
+}

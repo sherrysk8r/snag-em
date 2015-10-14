@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
   def index
   	@posts = Post.not_mine(current_user.id).chronological
+    @my_posts = Post.for_owner(current_user.id).chronological
   end
 
   def show

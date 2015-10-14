@@ -53,6 +53,11 @@
 	padding-right: 5rem;
 }
 
+.home-button:hover{
+	background-color: white;
+	color: #37D67A;
+}
+
 .hero .row{
 	padding-top: 20rem;
 }

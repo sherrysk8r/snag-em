@@ -5,7 +5,7 @@
   <%= f.input :phone_number %>
   <%= f.input :city %>
   <%= f.input :state %>
-  <%= f.input :date_of_birth %>
+  <%= f.input :date_of_birth, start_year: Date.today.year - 80, end_year: Date.today.year - 12 %>
   <%= f.input :password %>
   <%= f.input :password_confirmation %>
   <%= f.input :about_me %>

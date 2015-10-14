@@ -1,0 +1,7 @@
+<%= tagalong.review.owner_stars %>
+<%= tagalong.review.accuracy_of_event_stars %>
+<%= tagalong.review.review %>
+
+<%= link_to review_path(tagalong.review), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure you want to permanently destroy this review?')) }, :class => 'button radius alert' do%>
+<p> Delete Review </p>
+<% end %>

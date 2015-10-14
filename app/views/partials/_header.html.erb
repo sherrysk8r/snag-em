@@ -1,0 +1,9 @@
+<h1> Snag'Em </h1>
+<% if current_user != nil %>
+	<%= link_to "User", user_path(current_user) %>
+	<%= link_to "Post", posts_path %>
+	<%= link_to "Logout", logout_path %>
+<% else %>
+	<p>Already have an account? <%= link_to "Log in", login_path %>.</p>
+	<p>Need an account? <%= link_to "Sign Up", signup_path %>.</p?
+<% end %>

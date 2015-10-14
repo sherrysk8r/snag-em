@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user_posts = Post.for_owner(@user.id)
-    #@user_tagalongs = @user.tagalongs.title
+    @user_tagalongs = Tagalong.for_user(@user.id)
   end
 
   def new

@@ -27,7 +27,8 @@
   <% else %>
     <ul>
       <% @user_tagalongs.each do |tagalong| %>
-          <% if tagalong.post.date < Date.today %>
+          <!--if its past and they attended -->
+          <% if tagalong.post.date < Date.today && tagalong.showed_up == true%>
             <div style="border:1px solid black">
               <li><%= tagalong.post.title %>  @  <%= tagalong.post.date %></li>
               <% if tagalong.review != nil %>
@@ -58,7 +59,7 @@
   <% end %>
 </p>
 
-<p><b>Past Events:</b>
+<p><b>Past Posts:</b>
   <% if @user_posts.empty? %>
     &nbsp;&nbsp;<em>No past workouts at this time.</em>
   <% else %>

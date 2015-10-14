@@ -15,6 +15,7 @@
 //= require jquery-ui
 //= require jquery_nested_form
 //= require_tree .
+//= require foundation
 
 $(function(){ 
 	$(".datepicker").datepicker({
@@ -22,3 +23,4 @@ $(function(){
 	});
 
 });
+(document).foundation();

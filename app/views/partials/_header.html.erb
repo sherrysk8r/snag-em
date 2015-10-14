@@ -1,9 +1,23 @@
-<h1> Snag'Em </h1>
-<% if current_user != nil %>
-	<%= link_to "User", user_path(current_user) %>
-	<%= link_to "Post", posts_path %>
-	<%= link_to "Logout", logout_path %>
-<% else %>
-	<p>Already have an account? <%= link_to "Log in", login_path %>.</p>
-	<p>Need an account? <%= link_to "Sign Up", signup_path %>.</p?
-<% end %>
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1 class="nav-space">Snag'Em</h1>
+    </li>
+     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+	<% if current_user != nil %>
+		<li class="active"><%= link_to "User", user_path(current_user) %></li>
+		<li class="inactive"><%= link_to "Post", posts_path %></li>
+		<li class="inactive"><%= link_to "Logout", logout_path %></li>
+	<% else %>
+		<li class="active"><%= link_to "Log in", login_path %></li>
+		<li class="inactive"><%= link_to "Sign Up", signup_path %></li>
+	<% end %>
+    </ul>
+  </section>
+ </nav>

@@ -1,0 +1,10 @@
+.top-bar{
+	background-color: #37D67A;
+}
+
+.nav-space{
+	display: block;
+	font-weight: normal;
+	padding: 0 0.9375rem;
+	width: 75%;
+}

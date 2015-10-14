@@ -37,6 +37,10 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def tagalong_requests
+    @pending_tagalongs = @user.pending_tagalongs
+  end
+
   private
     def set_user
       @user = User.find(params[:id])

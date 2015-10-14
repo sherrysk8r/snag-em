@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
 	has_many :tagalongs
-	belongs_to :user
+	belongs_to :user, foreign_key: "owner_id"
 
 	validates_numericality_of :estimated_difficulty, only_integer: true
 	validates_inclusion_of :estimated_difficulty, in: 1..10, message: "must be between 1 and 10"

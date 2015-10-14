@@ -9,7 +9,6 @@ class PostsController < ApplicationController
   end
 
   def new
-  	puts @current_user
     @post = Post.new
   end
 

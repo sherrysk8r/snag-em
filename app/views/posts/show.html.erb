@@ -1,16 +1,13 @@
-<h2> Details: </h2>
-<p> Post: <%= @post.id %></p> 
-<p> Owner: <%= @post.owner_id %></p> 
+<h2> Details: </h2> 
+<p> Owner: <%= @post.user.proper_name %></p> 
 <p> Title: <%= @post.title %> </p>
 <p> Topic: <%= @post.topic %> </p>
 <p> Date: <%= @post.date %> </p>
-<p> Start Time: <%= @post.start_time %> </p>
-<p> Expected Duration: <%= @post.expected_duration %> </p>
+<p> Start Time: <%= @post.start_time.strftime("%I:%M %p") %> </p>
+<p> Expected Duration: <%= @post.expected_duration.strftime("%H hours %M minutes") %> </p>
 <p> Details: <%= @post.details %> </p>
 <p> Cancelled: <%= @post.cancelled %> </p>
 <p> Estimated Difficulty: <%= @post.estimated_difficulty %> </p>
-
-<p> <%= current_user.id %> </p>
 
 <h2> Tagalongs: </h2>
 <% @post.tagalongs.each do |tagalong| %>
@@ -26,8 +23,8 @@
   </div>
 <% end %>
 
-<% if !(Tagalong.exists?(:user_id => current_user.id, :post_id => @post.id )) %>
-  <%= render :partial => "addtagalong_form", locals: { post: @post} %>
+<% if !(Tagalong.exists?(:user_id => current_user.id, :post_id => @post.id )) && current_user.id != @post.owner_id %>
+  <%= render partial: "addtagalong_form", locals: { post: @post} %>
 <% end %>
 
 <%= link_to "Back", posts_path %>

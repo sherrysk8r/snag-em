@@ -16,4 +16,9 @@ class Tagalong < ActiveRecord::Base
 	def self.past
 		self.joins(:post).where("date <= ?", Date.today).where("start_time <= ?", Time.now)
 	end
+
+	def mark_as_showed_up
+		self.showed_up = true
+		self.save!
+	end
 end

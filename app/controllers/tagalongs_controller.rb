@@ -11,6 +11,16 @@ class TagalongsController < ApplicationController
 	end
 
 	def edit
+		if !params[:status].nil? && params[:status] == "approved"
+    		
+			tagalong = Tagalong.find(params[:id])
+			tagalong.approved = true
+			tagalong.save!
+			flash[:notice] = "#{tagalong.user.proper_name} was approved to join you on #{tagalong.post.date.strftime('%m/%d/%Y')} on #{tagalong.post.start_time.strftime('%h:%M %p')}"
+			
+			redirect_to pending_url
+		end
+
 	end
 
     def create

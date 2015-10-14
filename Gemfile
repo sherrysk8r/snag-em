@@ -9,7 +9,11 @@ gem 'sqlite3'
 gem 'carrierwave'
 gem 'cancancan'
 gem 'simple_form'
+gem 'nested_form','0.3.2'
 gem 'bcrypt-ruby'
+gem 'populator'
+gem 'faker'
+gem 'factory_girl_rails'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -21,14 +25,15 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem "jquery-rails", "~> 2.3.0"
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-
+gem 'validates_timeliness', '~> 3.0.8'
+gem 'foundation-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

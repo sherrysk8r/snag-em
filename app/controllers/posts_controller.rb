@@ -2,7 +2,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-  	@posts = Post.all
+  	@posts = Post.not_mine(current_user.id).chronological
+    @my_posts = Post.for_owner(current_user.id).chronological
   end
 
   def show
@@ -16,8 +17,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-
+  	@post = Post.new(post_params)
+  	params[:post][:owner_id] = current_user.id
     if @post.save
       redirect_to posts_url, notice: 'Event was successfully created.'
     else
@@ -44,7 +45,7 @@ class PostsController < ApplicationController
     @post = Post.find(@tagalong.post_id)
     if @tagalong.valid?
       @tagalong.save
-      redirect_to posts_url, notice: 'Tagalong was successfully added.'
+      redirect_to posts_url, notice: 'You successfully requested to tagalong.'
     else
       format.json { render json: @tagalong.errors, status: :unprocessable_entity }
     end

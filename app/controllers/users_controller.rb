@@ -2,8 +2,10 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def show
-    @user_posts = Post.for_owner(@user.id)
-    @user_tagalongs = Tagalong.for_user(@user.id)
+    @user_upcoming_posts = Post.for_owner(@user.id).upcoming
+    @user_past_posts = Post.for_owner(@user.id).past
+    @user_upcoming_tagalongs = Tagalong.for_user(@user.id).upcoming
+    @user_past_tagalongs = Tagalong.for_user(@user.id).past
   end
 
   def new
@@ -37,12 +39,16 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def pending_tagalongs
+    @pending_tagalongs = current_user.pending_tagalongs
+  end
+
   private
     def set_user
       @user = User.find(params[:id])
     end
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :phone_number, :city, :state, :about_me, :date_of_birth, :password, :password_confirmation, :active)
+      params.require(:user).permit(:first_name, :last_name, :email, :phone, :city, :state, :about_me, :date_of_birth, :password, :password_confirmation, :active)
     end
 end

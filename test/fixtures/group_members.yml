@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  groupId: 1
+  userId: 1
+
+two:
+  groupId: 1
+  userId: 1

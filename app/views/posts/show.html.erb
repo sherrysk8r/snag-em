@@ -2,8 +2,7 @@
 <p> Owner: <%= @post.user.proper_name %></p> 
 <p> Title: <%= @post.title %> </p>
 <p> Topic: <%= @post.topic %> </p>
-<p> Date: <%= @post.date %> </p>
-<p> Start Time: <%= @post.start_time.strftime("%I:%M %p") %> </p>
+<p> Begins: <%= @post.datetime %> </p>
 <p> Expected Duration: <%= @post.expected_duration.strftime("%H hours %M minutes") %> </p>
 <p> Details: <%= @post.details %> </p>
 <p> Cancelled: <%= @post.cancelled %> </p>

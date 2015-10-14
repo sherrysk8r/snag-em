@@ -24,6 +24,6 @@ class Post < ActiveRecord::Base
 	end
 
 	def datetime
-		self.date.strftime('%m/%d/%Y') + " " + self.start_time.strftime('%H:%M %p')
+		self.date.strftime('%m/%d/%Y') + " (" + self.start_time.strftime('%H:%M %p') + ")"
 	end
 end

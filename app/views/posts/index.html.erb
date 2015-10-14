@@ -4,7 +4,7 @@
 	<div style="border:1px solid black">
 		<h3><%= p.title %></h3>
 		<p><%= p.topic %></p>
-		<p><%= p.date.strftime('%m/%d/%Y') %> (<%=p.start_time.strftime('%H:%M %p') %>)</p>
+		<p><%= p.datetime %></p>
 		<p><%= link_to "View", post_path(p) %></p>
 	</div>
 <% end %>

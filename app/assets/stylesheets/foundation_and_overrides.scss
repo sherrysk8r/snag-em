@@ -1494,3 +1494,20 @@ select.date{
 	display: inline;
 	width: 33%;
 }
+
+select.time{
+	width: 25%;
+}
+.input.string.optional.post_date{
+	width: 33%;
+	float: left;
+	margin-right: 10%;
+}
+.input.time.optional.post_start_time{
+	width: 29%;
+	float: left;
+}
+.input.time.optional.post_expected_duration{
+	width: 27%;
+	float: left;
+}

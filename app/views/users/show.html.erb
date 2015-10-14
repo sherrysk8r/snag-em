@@ -6,13 +6,12 @@
 <p><b>Upcoming Tagalongs:</b>
   <% if @user_upcoming_tagalongs.empty? %>
     &nbsp;&nbsp;<em>No scheduled tagalongs at this time.</em> Do you want to <%=link_to "schedule", new_post_path %> one? 
-    <!-- If it's the current user, should have link to ask to schedule an event. -->
   <% else %>
     <ul>
   		<% @user_upcoming_tagalongs.each do |tagalong| %>
-        <% if tagalong.post.date >= Date.today %>
-  			   <li><%= tagalong.post.title %>  @  <%= tagalong.post.datetime %>) </li>
-        <%end %>
+        <li><%= tagalong.post.title %>  @  <%= tagalong.post.datetime %>) <br>
+            Contact <%= tagalong.post.user.first_name %> at <%= tagalong.post.user.phone %>
+        </li>
   		<% end %>
   	</ul>
   <% end %>

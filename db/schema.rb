@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151005152016) do
+ActiveRecord::Schema.define(version: 20151009201037) do
+
+  create_table "group_members", force: :cascade do |t|
+    t.integer  "groupId"
+    t.integer  "userId"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "private"
+    t.string   "domain"
+    t.boolean  "company"
+    t.string   "picture"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "posts", force: :cascade do |t|
     t.integer  "owner_id"
@@ -40,6 +57,7 @@ ActiveRecord::Schema.define(version: 20151005152016) do
     t.integer  "user_id"
     t.integer  "post_id"
     t.boolean  "showed_up"
+    t.boolean  "approved"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,7 +66,7 @@ ActiveRecord::Schema.define(version: 20151005152016) do
     t.string   "last_name"
     t.string   "first_name"
     t.string   "email"
-    t.string   "phone_number"
+    t.string   "phone"
     t.string   "city"
     t.string   "state"
     t.text     "about_me"

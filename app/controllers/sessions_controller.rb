@@ -6,7 +6,12 @@ class SessionsController < ApplicationController
       user = User.find_by_email(params[:email])
       if user && User.authenticate(params[:email], params[:password])
         session[:user_id] = user.id
-        redirect_to posts_url, notice: "Logged in!"
+        # may want to redesign this as a notification
+        if user.pending_tagalongs.length != 0
+          redirect_to pending_url, notice: "Logged in!"
+        else
+          redirect_to posts_url, notice: "Logged in!"
+        end
       else
         flash.now.alert = "Email or password is invalid"
         render "new"

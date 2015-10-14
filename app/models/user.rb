@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	has_many :posts
+	has_many :posts, foreign_key: "owner_id"
 	has_many :tagalongs
 
 	has_secure_password
@@ -30,5 +30,10 @@ class User < ActiveRecord::Base
 	end
 
 	def perc_cancelled
+		return self.posts.cancelled.length/self.posts.length
+	end
+
+	def pending_tagalongs
+		return self.posts.map{|p| p.tagalongs.where("approved IS NULL")}.flatten.to_a
 	end
 end

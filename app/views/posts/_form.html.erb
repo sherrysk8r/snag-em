@@ -1,8 +1,7 @@
 <%= simple_form_for @post do |f| %>
-  <%= f.input :owner_id %>
   <%= f.input :title %>
   <%= f.input :topic %>
-  <%= f.input :date %>
+  <%= f.input :date, as: :string, start_date: Date.today, input_html: {class: "datepicker"} %>
   <%= f.input :start_time %>
   <%= f.input :expected_duration %>
   <%= f.input :details %>

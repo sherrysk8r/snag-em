@@ -4,6 +4,7 @@ class CreateTagalongs < ActiveRecord::Migration
       t.integer :user_id
       t.integer :post_id
       t.boolean :showed_up
+      t.boolean :approved
 
       t.timestamps null: false
     end

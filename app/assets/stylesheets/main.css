@@ -8,3 +8,51 @@
 	padding: 0 0.9375rem;
 	width: 75%;
 }
+
+.log-in{
+	background-color:#697689 !important;
+	border: #697689 solid 1px !important;
+	color: #37D67A !important;
+	padding-top: .4rem !important
+}
+
+.log-in:hover{
+	color: #697689 !important;
+	background-color:transparent !important;
+}
+
+.sign-up{
+	background-color: transparent !important;
+	border: white solid 1px !important;
+	padding-top: .4rem !important
+}
+
+.sign-up:hover{
+	color: #37D67A !important;
+	background-color: white !important;
+}
+
+.nav-bar-button{
+	background-color: transparent !important;
+}
+
+.nav-bar-button .button{
+	padding-left: 1.5rem !important;
+	padding-right: 1.5rem !important;
+}
+
+.hero{
+	background: url("home-background.png") no-repeat center center;
+	background-size: cover;
+  	height: 100vh; 
+  }
+
+.home-button{
+	background-color: #37D67A;
+	padding-left: 5rem;
+	padding-right: 5rem;
+}
+
+.hero .row{
+	padding-top: 20rem;
+}

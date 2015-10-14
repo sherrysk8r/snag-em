@@ -1,8 +1,14 @@
-<h1> Snag' em </h1>
-
-<h2> Welcome! </h2>
-<%= link_to "Create Post", new_post_path %> 
-<%= link_to "View All Posts", posts_path %>
-
-<p>Already have an account? <%= link_to "Log in", login_path %>.</p>
-<p>Need an account? <%= link_to "Sign Up", signup_path %>.</p?
+<!-- <section class="hero">
+	<div class="row intro" id="landing">
+	</div>
+</section> -->
+<section class="hero">
+<div class="row">
+  <div class="small-5 small-offset-1 columns text-center">
+  	<%= link_to "Find a Workout", new_post_path, {:class => "button round home-button"} %> 
+  </div>
+  <div class="small-5 columns end text-center">
+  	<%= link_to "Post a Workout", posts_path, {:class => "button round home-button"} %>
+  </div>
+</div>
+</section>

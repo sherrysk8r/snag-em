@@ -11,6 +11,9 @@ gem 'cancancan'
 gem 'simple_form'
 gem 'nested_form','0.3.2'
 gem 'bcrypt-ruby'
+gem 'populator'
+gem 'faker'
+gem 'factory_girl_rails'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

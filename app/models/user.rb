@@ -30,5 +30,10 @@ class User < ActiveRecord::Base
 	end
 
 	def perc_cancelled
+		return self.posts.cancelled.length/self.posts.length
+	end
+
+	def pending_tagalongs
+		return self.posts.map{|p| p.tagalongs.where("approved IS NULL")}
 	end
 end

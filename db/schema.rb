@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20151009201037) do
     t.integer  "user_id"
     t.integer  "post_id"
     t.boolean  "showed_up"
+    t.boolean  "approved"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -65,7 +66,7 @@ ActiveRecord::Schema.define(version: 20151009201037) do
     t.string   "last_name"
     t.string   "first_name"
     t.string   "email"
-    t.string   "phone_number"
+    t.string   "phone"
     t.string   "city"
     t.string   "state"
     t.text     "about_me"

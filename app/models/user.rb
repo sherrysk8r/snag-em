@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	has_many :posts
+	has_many :posts, foreign_key: "owner_id"
 	has_many :tagalongs
 
 	has_secure_password
@@ -34,6 +34,6 @@ class User < ActiveRecord::Base
 	end
 
 	def pending_tagalongs
-		return self.posts.map{|p| p.tagalongs.where("approved IS NULL")}
+		return self.posts.map{|p| p.tagalongs.where("approved IS NULL")}.compact
 	end
 end

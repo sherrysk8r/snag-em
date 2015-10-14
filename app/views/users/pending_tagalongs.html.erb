@@ -1,0 +1,8 @@
+<table>
+	<% @pending_tagalongs.each do |pt| %>
+		<tr>
+			<td><%= pt.map{|p| p.user.name}.to_s %></td>
+			<td><%= pt.map{|p| p.approved} %></td>
+		</tr>
+	<% end %>
+</table>

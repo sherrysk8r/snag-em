@@ -37,8 +37,8 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-  def tagalong_requests
-    @pending_tagalongs = @user.pending_tagalongs
+  def pending_tagalongs
+    @pending_tagalongs = current_user.pending_tagalongs
   end
 
   private

@@ -34,6 +34,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'validates_timeliness', '~> 3.0.8'
 gem 'foundation-rails'
+gem 'chronic'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

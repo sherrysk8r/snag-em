@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-  	@posts = Post.not_mine(current_user.id)
+  	@posts = Post.not_mine(current_user.id).chronological
   end
 
   def show

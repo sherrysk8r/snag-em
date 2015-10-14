@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-  	@posts = Post.all
+  	@posts = Post.not_mine(current_user.id)
   end
 
   def show
@@ -44,7 +44,7 @@ class PostsController < ApplicationController
     @post = Post.find(@tagalong.post_id)
     if @tagalong.valid?
       @tagalong.save
-      redirect_to posts_url, notice: 'Tagalong was successfully added.'
+      redirect_to posts_url, notice: 'You successfully requested to tagalong.'
     else
       format.json { render json: @tagalong.errors, status: :unprocessable_entity }
     end

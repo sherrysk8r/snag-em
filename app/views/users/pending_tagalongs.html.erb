@@ -1,8 +1,20 @@
+<% if @pending_tagalongs.length != 0 %>
 <table>
 	<% @pending_tagalongs.each do |pt| %>
 		<tr>
-			<td><%= pt.map{|p| p.user.name}.to_s %></td>
-			<td><%= pt.map{|p| p.approved} %></td>
+			<td><%= pt.user.proper_name.to_s %> wants to join you on <%= pt.post.title %> on <%= pt.post.date.strftime('%m/%d/%Y') %> at <%= pt.post.start_time.strftime('%H:%M %p') %>. Is that ok?</td>
+			<td><% if pt.approved.nil? || pt.approved == false %> 
+                <%= link_to edit_tagalong_path(id: pt.id, status: "approved") do %>
+                  <%= image_tag 'checkmark_empty.png', class: 'checkmark' %>
+                <% end %>
+              <% else %>
+                <%= image_tag "checkmark_filled.png", class: "checkmark" %>
+              <% end %>
+            </td>
 		</tr>
 	<% end %>
 </table>
+
+<% else %>
+	<p>All done! No requests left to approve.</p>
+<% end %>

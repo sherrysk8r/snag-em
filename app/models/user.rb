@@ -34,6 +34,6 @@ class User < ActiveRecord::Base
 	end
 
 	def pending_tagalongs
-		return self.posts.map{|p| p.tagalongs.where("approved IS NULL")}.compact
+		return self.posts.map{|p| p.tagalongs.where("approved IS NULL")}.flatten.to_a
 	end
 end

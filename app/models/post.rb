@@ -8,7 +8,8 @@ class Post < ActiveRecord::Base
 	validates_date :date, on_or_after: lambda { Date.today }, on_or_after_message: "cannot be in the past", on:  :create
 
 	scope :for_owner,   ->(user_id) { where(owner_id: user_id) }
-
+	scope :not_mine, -> (user_id) {where("owner_id != ? ", user_id)}
+	
 	scope :for_difficulty, ->(difficulty) { where(estimated_difficulty: difficulty) }
 	scope :cancelled, ->{ where(cancelled: true)}
 	scope :not_cancelled, ->{ where(cancelled: false)}

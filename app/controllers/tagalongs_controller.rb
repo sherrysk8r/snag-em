@@ -37,8 +37,24 @@ class TagalongsController < ApplicationController
     	redirect_to posts_url
     end
 
+	# A simple form that is submitted through AJAX. Found on user page
+	def addreview
+		@review = Review.new(review_params)
+		@tagalong = Tagalong.find(@review.tagalong_id)
+		if @review.valid?
+		  @review.save
+		  redirect_to user_url(current_user), notice: 'Review was successfully added.'
+		else
+		  format.json { render json: @review.errors, status: :unprocessable_entity }
+		end
+	end
+
 	private
 	def tagalong_params
       params.require(:tagalong).permit(:user_id, :post_id, :showed_up)
+    end
+
+    def review_params
+      params.require(:review).permit(:tagalong_id, :owner_stars, :accuracy_of_event_stars, :review)
     end
 end

@@ -36,12 +36,13 @@ ActiveRecord::Schema.define(version: 20151009201037) do
     t.string   "topic"
     t.date     "date"
     t.time     "start_time"
-    t.time     "expected_duration"
+    t.integer  "expected_duration_hr"
+    t.integer  "expected_duration_min"
     t.text     "details"
     t.boolean  "cancelled"
     t.integer  "estimated_difficulty"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "reviews", force: :cascade do |t|

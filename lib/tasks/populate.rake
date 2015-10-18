@@ -138,12 +138,27 @@ namespace :db do
     run6.estimated_difficulty = 5
     run6.save!
     
+    cities = [Faker::Address.city, Faker::Address.city, Faker::Address.city, Faker::Address.city, Faker::Address.city, Faker::Address.city, Faker::Address.city, Faker::Address.city, Faker::Address.city]
+    
+    states = [Faker::Address.state,Faker::Address.state,Faker::Address.state,Faker::Address.state]
+
     100.times do
-      last_name = Faker::Name.last_name
-      first_name = Faker::Name.first_name 
-      email = Faker::Internet.email
-      phone_number = Faker::PhoneNumber.phone_number
-      FactoryGirl.create(:family, family_name: family_name, parent_first_name: parent_first_name)
+      user = User.new
+      user.last_name = Faker::Name.last_name
+      user.first_name = Faker::Name.first_name 
+      user.email = Faker::Internet.safe_email(user.first_name + '-' + user.last_name)
+      user.phone = Faker::Base.numerify('(###)-###-####')
+      user.city = rand(cities.length)
+      user.state = rand(states.length)
+      user.about_me = "I LOVE THIS APP!"
+      user.date_of_birth = Faker::Date.between(30.years.ago, 15.years.ago)
+      user.password = "secret"
+      user.password_confirmation = "secret"
+      user.active = TRUE
+      user.save!
+      # FactoryGirl.create(:user, last_name: last_name, first_name: first_name, email: email, phone: phone_number, city: city, state: state, about_me: about_me, date_of_birth: date_of_birth, password: password, password_confirmation: password_confirmation, active: active)
     end
+
+    #create some postss
   end
 end

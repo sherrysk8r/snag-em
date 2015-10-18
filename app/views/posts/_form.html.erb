@@ -5,7 +5,8 @@
 		  <%= f.input :topic %>
 		  <%= f.input :date, as: :string, start_date: Date.today, input_html: {class: "datepicker"} %>
 		  <%= f.input :start_time %>
-		  <%= f.input :expected_duration %>
+		  <%= f.input :expected_duration_hr, label: "Hour" %>
+		  <%= f.input :expected_duration_min, label: "Min" %>
 		  <%= f.input :details %>
 		  <%= f.input :cancelled %>
 		  <%= f.input :estimated_difficulty %>

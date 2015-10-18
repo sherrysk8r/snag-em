@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
 	validates_confirmation_of :password, :message => "does not match"
 	validates_length_of :password, :minimum => 4, :message => "must be at least 4 characters long", :allow_blank => true
 	
+	before_save :reformat_phone
+
 	def proper_name
       first_name + " " + last_name
     end
@@ -36,4 +38,8 @@ class User < ActiveRecord::Base
 	def pending_tagalongs
 		return self.posts.map{|p| p.tagalongs.where("approved IS NULL")}.flatten.to_a
 	end
+
+	def reformat_phone
+	    self.phone = self.phone.to_s.gsub(/[^0-9]/,"")
+    end
 end

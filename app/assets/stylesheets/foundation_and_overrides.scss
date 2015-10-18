@@ -1492,22 +1492,31 @@ $include-html-global-classes: $include-html-classes;
 
 select.date{
 	display: inline;
-	width: 33%;
+	width: 32%;
 }
 
 select.time{
 	width: 25%;
 }
-.input.string.optional.post_date{
-	width: 33%;
+
+div.string.optional.post_date{
+	width: 30%;
 	float: left;
 	margin-right: 10%;
 }
-.input.time.optional.post_start_time{
-	width: 29%;
+div.time.optional.post_start_time{
+	width: 30%;
 	float: left;
 }
-.input.time.optional.post_expected_duration{
-	width: 27%;
+
+div.post_expected_duration_hr{
+	width: 10%;
+	float: left;
+	margin-right: 5%;
+}
+
+div.post_expected_duration_min{
+	width: 10%;
 	float: left;
 }
+

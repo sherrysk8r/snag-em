@@ -66,7 +66,8 @@ namespace :db do
     run1.topic = "Running"
     run1.date = Date.today + 1
     run1.start_time = Time.now + 60*60
-    run1.expected_duration = Time.now + 60*60
+    run1.expected_duration_hr = 1
+    run1.expected_duration_min = 30
     run1.details = "Meet behind Hunt. I will be wearing a IS sweater."
     run1.cancelled = FALSE
     run1.estimated_difficulty = 3
@@ -78,7 +79,8 @@ namespace :db do
     run2.topic = "Running"
     run2.date = Date.today
     run2.start_time = Time.now + 60*60*3
-    run2.expected_duration = Time.now + 60*60
+    run2.expected_duration_hr = 0
+    run2.expected_duration_min = 45
     run2.details = "Meet behind Hunt. I will be wearing a IS sweater."
     run2.cancelled = FALSE
     run2.estimated_difficulty = 2
@@ -90,7 +92,8 @@ namespace :db do
     run3.topic = "Running"
     run3.date = Date.today
     run3.start_time = Time.now + 60*60*3
-    run3.expected_duration = Time.now + 60*60
+    run3.expected_duration_hr = 0
+    run3.expected_duration_min = 30
     run3.details = "Meet at Margaret Morrison bus stop. I will be wearing a IS sweater."
     run3.cancelled = FALSE
     run3.estimated_difficulty = 4
@@ -102,7 +105,8 @@ namespace :db do
     run4.topic = "Running"
     run4.date = Date.today + 2
     run4.start_time = Time.now + 60*60*-5
-    run4.expected_duration = Time.now + 60*60
+    run4.expected_duration_hr = 1
+    run4.expected_duration_min = 0
     run4.details = "Meet at Margaret Morrison bus stop. I will be wearing a IS sweater."
     run4.cancelled = FALSE
     run4.estimated_difficulty = 2
@@ -114,7 +118,8 @@ namespace :db do
     run5.topic = "Running"
     run5.date = Date.today
     run5.start_time = Time.now + 60*60*5
-    run5.expected_duration = Time.now + 60*60
+    run5.expected_duration_hr = 1
+    run5.expected_duration_min = 15
     run5.details = "Meet by Walk to Sky. I will be wearing a IS sweater."
     run5.cancelled = FALSE
     run5.estimated_difficulty = 1
@@ -126,11 +131,19 @@ namespace :db do
     run6.topic = "Running"
     run6.date = Date.today
     run6.start_time = Time.now + 60*60*5
-    run6.expected_duration = Time.now + 60*60
+    run6.expected_duration_hr = 0
+    run6.expected_duration_min = 45
     run6.details = "Meet by Walk to Sky. I will be wearing a IS sweater."
     run6.cancelled = FALSE
     run6.estimated_difficulty = 5
     run6.save!
     
+    100.times do
+      last_name = Faker::Name.last_name
+      first_name = Faker::Name.first_name 
+      email = Faker::Internet.email
+      phone_number = Faker::PhoneNumber.phone_number
+      FactoryGirl.create(:family, family_name: family_name, parent_first_name: parent_first_name)
+    end
   end
 end

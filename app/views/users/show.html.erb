@@ -2,6 +2,8 @@
 <p>
   <b>Email</b>: <%= mail_to @user.email, @user.email, encode: "javascript" %>
 </p>
+<p><b>Phone</b>: <%= number_to_phone(@user.phone) %>
+</p>
 
 <p><b>Upcoming Tagalongs:</b>
   <% if @user_upcoming_tagalongs.empty? %>
@@ -10,7 +12,7 @@
     <ul>
   		<% @user_upcoming_tagalongs.each do |tagalong| %>
         <li><%= tagalong.post.title %>  @  <%= tagalong.post.datetime %>) <br>
-            Contact <%= tagalong.post.user.first_name %> at <%= tagalong.post.user.phone %>
+            Contact <%= tagalong.post.user.first_name %> at <%= number_to_phone(tagalong.post.user.phone) %>
         </li>
   		<% end %>
   	</ul>

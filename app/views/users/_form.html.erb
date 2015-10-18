@@ -1,13 +1,17 @@
-<%= simple_form_for @user do |f| %>
-  <%= f.input :first_name %>
-  <%= f.input :last_name %>
-  <%= f.input :email %>
-  <%= f.input :phone %>
-  <%= f.input :city %>
-  <%= f.input :state %>
-  <%= f.input :date_of_birth, start_year: Date.today.year - 12, end_year: Date.today.year - 80 %>
-  <%= f.input :password %>
-  <%= f.input :password_confirmation %>
-  <%= f.input :about_me %>
-  <%= f.button :submit %>
-<% end %>
+<div class="row">
+  <div class="small-8 columns">
+    <%= simple_form_for @user do |f| %>
+      <%= f.input :first_name %>
+      <%= f.input :last_name %>
+      <%= f.input :email %>
+      <%= f.input :phone %>
+      <%= f.input :city %>
+      <%= f.input :state %>
+      <%= f.input :date_of_birth, start_year: Date.today.year - 12, end_year: Date.today.year - 80 %>
+      <%= f.input :password %>
+      <%= f.input :password_confirmation %>
+      <%= f.input :about_me %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>

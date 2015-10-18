@@ -6,6 +6,12 @@ class Post < ActiveRecord::Base
 	validates_inclusion_of :estimated_difficulty, in: 1..10, message: "must be between 1 and 10"
 
 	validates_date :date, on_or_after: lambda { Date.today }, on_or_after_message: "cannot be in the past", on:  :create
+	
+	validates_numericality_of :expected_duration_min, only_integer: true
+	validates_inclusion_of :estimated_difficulty, in: 0..60, message: "must be between 0 and 60"
+
+	validates_numericality_of :expected_duration_hr, only_integer: true
+	validates_inclusion_of :estimated_difficulty, in: 0..5, message: "Your event is over 5 hours long?"
 
 	scope :for_owner,   ->(user_id) { where(owner_id: user_id) }
 	scope :not_mine, -> (user_id) {where("owner_id != ? ", user_id)}

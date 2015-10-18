@@ -1,14 +1,18 @@
-<%= simple_form_for @post do |f| %>
-  <%= f.input :title %>
-  <%= f.input :topic %>
-  <%= f.input :date, as: :string, start_date: Date.today, input_html: {class: "datepicker"} %>
-  <%= f.input :start_time %>
-  <%= f.input :expected_duration %>
-  <%= f.input :details %>
-  <%= f.input :cancelled %>
-  <%= f.input :estimated_difficulty %>
-  <%= f.button :submit %>
-<% end %>
-
+<div class="row">
+	<div class="small-12 columns">
+		<%= simple_form_for @post do |f| %>
+		  <%= f.input :title %>
+		  <%= f.input :topic %>
+		  <%= f.input :date, as: :string, start_date: Date.today, input_html: {class: "datepicker"} %>
+		  <%= f.input :start_time %>
+		  <%= f.input :expected_duration_hr, label: "Hour" %>
+		  <%= f.input :expected_duration_min, label: "Min" %>
+		  <%= f.input :details %>
+		  <%= f.input :cancelled %>
+		  <%= f.input :estimated_difficulty %>
+		  <%= f.button :submit %>
+		<% end %>
+	</div>
+</div>
 <%= link_to "Back", posts_path %>
 

@@ -14,6 +14,10 @@ namespace :db do
     require 'faker'
     require 'factory_girl_rails'
 
+    cmu = Group.new
+    cmu.name = "Carnegie Mellon University"
+    cmu.open_group = TRUE
+    cmu.save!
     # Step 1: Create users
     
     sherry = User.new
@@ -27,6 +31,11 @@ namespace :db do
     sherry.password_confirmation = "secret"
     sherry.save!
 
+    cmuSherry = GroupMember.new
+    cmuSherry.groupId = cmu.id
+    cmuSherry.userId = sherry.id
+    cmuSherry.save!
+
     ian = User.new
     ian.first_name = "Ian"
     ian.last_name = "Go"
@@ -37,6 +46,11 @@ namespace :db do
     ian.password = "secret"
     ian.password_confirmation = "secret"
     ian.save!
+
+    cmuIan = GroupMember.new
+    cmuIan.groupId = cmu.id
+    cmuIan.userId = ian.id
+    cmuIan.save!
 
     hannah = User.new
     hannah.first_name = "Hannah"
@@ -49,6 +63,11 @@ namespace :db do
     hannah.password_confirmation = "secret"
     hannah.save!
 
+    cmuHannah = GroupMember.new
+    cmuHannah.groupId = cmu.id
+    cmuHannah.userId = hannah.id
+    cmuHannah.save!
+
     laura = User.new
     laura.first_name = "Laura"
     laura.last_name = "Lodewyk"
@@ -59,14 +78,20 @@ namespace :db do
     laura.password = "secret"
     laura.password_confirmation = "secret"
     laura.save!
-   
+    
+    cmuLaura = GroupMember.new
+    cmuLaura.groupId = cmu.id
+    cmuLaura.userId = laura.id
+    cmuLaura.save!
+
     run1 = Post.new
     run1.owner_id = ian.id
     run1.title = "Run Around Schenley"
     run1.topic = "Running"
     run1.date = Date.today + 1
     run1.start_time = Time.now + 60*60
-    run1.expected_duration = Time.now + 60*60
+    run1.expected_duration_hr = 1
+    run1.expected_duration_min = 30
     run1.details = "Meet behind Hunt. I will be wearing a IS sweater."
     run1.cancelled = FALSE
     run1.estimated_difficulty = 3
@@ -78,7 +103,8 @@ namespace :db do
     run2.topic = "Running"
     run2.date = Date.today
     run2.start_time = Time.now + 60*60*3
-    run2.expected_duration = Time.now + 60*60
+    run2.expected_duration_hr = 0
+    run2.expected_duration_min = 45
     run2.details = "Meet behind Hunt. I will be wearing a IS sweater."
     run2.cancelled = FALSE
     run2.estimated_difficulty = 2
@@ -90,7 +116,8 @@ namespace :db do
     run3.topic = "Running"
     run3.date = Date.today
     run3.start_time = Time.now + 60*60*3
-    run3.expected_duration = Time.now + 60*60
+    run3.expected_duration_hr = 0
+    run3.expected_duration_min = 30
     run3.details = "Meet at Margaret Morrison bus stop. I will be wearing a IS sweater."
     run3.cancelled = FALSE
     run3.estimated_difficulty = 4
@@ -102,7 +129,8 @@ namespace :db do
     run4.topic = "Running"
     run4.date = Date.today + 2
     run4.start_time = Time.now + 60*60*-5
-    run4.expected_duration = Time.now + 60*60
+    run4.expected_duration_hr = 1
+    run4.expected_duration_min = 0
     run4.details = "Meet at Margaret Morrison bus stop. I will be wearing a IS sweater."
     run4.cancelled = FALSE
     run4.estimated_difficulty = 2
@@ -114,7 +142,8 @@ namespace :db do
     run5.topic = "Running"
     run5.date = Date.today
     run5.start_time = Time.now + 60*60*5
-    run5.expected_duration = Time.now + 60*60
+    run5.expected_duration_hr = 1
+    run5.expected_duration_min = 15
     run5.details = "Meet by Walk to Sky. I will be wearing a IS sweater."
     run5.cancelled = FALSE
     run5.estimated_difficulty = 1
@@ -126,11 +155,50 @@ namespace :db do
     run6.topic = "Running"
     run6.date = Date.today
     run6.start_time = Time.now + 60*60*5
-    run6.expected_duration = Time.now + 60*60
+    run6.expected_duration_hr = 0
+    run6.expected_duration_min = 45
     run6.details = "Meet by Walk to Sky. I will be wearing a IS sweater."
     run6.cancelled = FALSE
     run6.estimated_difficulty = 5
     run6.save!
     
+    cities = [Faker::Address.city, Faker::Address.city, Faker::Address.city, Faker::Address.city, Faker::Address.city, Faker::Address.city, Faker::Address.city, Faker::Address.city, Faker::Address.city]
+    
+    states = [Faker::Address.state,Faker::Address.state,Faker::Address.state,Faker::Address.state]
+
+    100.times do
+      user = User.new
+      user.last_name = Faker::Name.last_name
+      user.first_name = Faker::Name.first_name 
+      user.email = Faker::Internet.safe_email(user.first_name + '-' + user.last_name)
+      user.phone = Faker::Base.numerify('(###)-###-####')
+      user.city = cities.sample
+      user.state = states.sample
+      user.about_me = "I LOVE THIS APP!"
+      user.date_of_birth = Faker::Date.between(30.years.ago, 15.years.ago)
+      user.password = "secret"
+      user.password_confirmation = "secret"
+      user.active = TRUE
+      user.save!
+      
+    end
+
+    all_users = User.all
+    topics = ["Running", "Lifting", "Swimming", "Ballroom", "Yoga", "Stretching"]
+    #create some posts
+    150.times do
+        post = Post.new
+        post.owner_id = all_users.sample.id
+        post.title = Faker::Lorem.sentence(3, true, 1)
+        post.topic = topics.sample
+        time = Faker::Time.between(1.day.from_now, 5.weeks.from_now, :morning)
+        post.date = time
+        post.start_time = time
+        post.expected_duration_hr = rand(0..2)
+        post.expected_duration_min = rand(1..59)
+        post.cancelled = FALSE
+        post.estimated_difficulty = rand(1..10)
+        post.save!
+    end
   end
 end

@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20151018181101) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"
-    t.boolean  "private"
+    t.boolean  "open_group"
     t.string   "domain"
     t.boolean  "company"
     t.string   "picture"
@@ -36,12 +36,13 @@ ActiveRecord::Schema.define(version: 20151018181101) do
     t.string   "topic"
     t.date     "date"
     t.time     "start_time"
-    t.time     "expected_duration"
+    t.integer  "expected_duration_hr"
+    t.integer  "expected_duration_min"
     t.text     "details"
     t.boolean  "cancelled"
     t.integer  "estimated_difficulty"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "reviews", force: :cascade do |t|

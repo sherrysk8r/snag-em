@@ -11,12 +11,17 @@
     <!-- Right Nav Section -->
     <ul class="right">
 	<% if current_user != nil %>
-		<li class="has-form nav-bar-button"><%= link_to "User", user_path(current_user), {:class => "button round log-in"} %></li>
-		<li class="has-form nav-bar-button"><%= link_to "Post", posts_path, {:class => "button round log-in"} %></li>
-		<li class="has-form nav-bar-button"><%= link_to "Logout", logout_path, {:class => "button round sign-up"} %></li>
+		<li class="has-form nav-bar-button"><%= link_to "User", user_path(current_user), {class: "button round log-in"} %></li>
+		<li class="has-form nav-bar-button"><%= link_to "Post", posts_path, {class: "button round log-in"} %></li>
+    <% if current_user.pending_tagalongs.length != 0 %>
+    <li class="has-form nav-bar-button"><%= link_to "Notifications", pending_path, {class: "button round notificationsToApprove"} %></li>
+		<% else %>
+    <li class="has-form nav-bar-button"><%= link_to "Notification", pending_path, {class: "button round log-in"} %></li>
+    <% end %>
+    <li class="has-form nav-bar-button"><%= link_to "Logout", logout_path, {class: "button round sign-up"} %></li>
 	<% else %>
-		<li class="has-form nav-bar-button"><%= link_to "Log in", login_path, {:class => "button round log-in"} %></li>
-		<li class="has-form nav-bar-button"><%= link_to "Sign Up", signup_path, {:class => "button round sign-up"} %></li>
+		<li class="has-form nav-bar-button"><%= link_to "Log in", login_path, {class: "button round log-in"} %></li>
+		<li class="has-form nav-bar-button"><%= link_to "Sign Up", signup_path, {class: "button round sign-up"} %></li>
 	<% end %>
     </ul>
   </section>

@@ -22,5 +22,9 @@ $(function(){
 	    format: 'mm/dd/YYYY'
 	});
 
+	$(document).foundation();
+
+	$('.notice').fadeIn('normal', function() {
+      $(this).delay(1200).fadeOut();
+    });
 });
-(document).foundation();

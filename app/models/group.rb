@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-	before_save :find_pic
+	# before_save :find_pic
 
 	def find_pic
 		# can change the size of the image by adding .com?size = xx

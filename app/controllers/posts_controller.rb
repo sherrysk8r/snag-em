@@ -17,8 +17,11 @@ class PostsController < ApplicationController
   end
 
   def create
-  	@post = Post.new(post_params)
-  	params[:post][:owner_id] = current_user.id
+    params[:post][:owner_id] = current_user.id
+    params[:post][:date] = Chronic.parse(post_params[:date])
+  	
+    @post = Post.new(post_params)
+  	
     if @post.save
       redirect_to posts_url, notice: 'Event was successfully created.'
     else

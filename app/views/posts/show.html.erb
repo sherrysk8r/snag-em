@@ -3,7 +3,7 @@
 <p> Owner: <%= link_to @post.user.proper_name, user_path(@post.owner_id) %> </p> 
 <p> Topic: <%= @post.topic %> </p>
 <p> Begins: <%= @post.datetime %> </p>
-<p> Expected Duration: <%= @post.expected_duration.strftime("%H hours %M minutes") %> </p>
+<p> Expected Duration: <%= @post.expected_duration_hr %> Hours <%= @post.expected_duration_min %> Minutes</p>
 <p> Details: <%= @post.details %> </p>
 <p> Cancelled: <%= @post.cancelled %> </p>
 <p> Estimated Difficulty: <%= @post.estimated_difficulty %> </p>

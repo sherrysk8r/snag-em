@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151009201037) do
+ActiveRecord::Schema.define(version: 20151018181101) do
 
   create_table "group_members", force: :cascade do |t|
     t.integer  "groupId"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20151009201037) do
     t.boolean  "active"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "role"
   end
 
 end

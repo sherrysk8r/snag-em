@@ -17,6 +17,13 @@ class User < ActiveRecord::Base
 	validates_confirmation_of :password, :message => "does not match"
 	validates_length_of :password, :minimum => 4, :message => "must be at least 4 characters long", :allow_blank => true
 	
+	ROLES = [['Administrator', :admin],['User', :user]]
+
+	def role?(authorized_role)
+		return false if role.nil?
+		role.to_sym == authorized_role
+	end
+
 	def proper_name
       first_name + " " + last_name
     end

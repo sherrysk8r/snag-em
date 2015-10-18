@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20151009201037) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"
-    t.boolean  "private"
+    t.boolean  "open_group"
     t.string   "domain"
     t.boolean  "company"
     t.string   "picture"

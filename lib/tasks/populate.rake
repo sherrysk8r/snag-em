@@ -14,6 +14,10 @@ namespace :db do
     require 'faker'
     require 'factory_girl_rails'
 
+    cmu = Group.new
+    cmu.name = "Carnegie Mellon University"
+    cmu.open_group = TRUE
+    cmu.save!
     # Step 1: Create users
     
     sherry = User.new
@@ -27,6 +31,11 @@ namespace :db do
     sherry.password_confirmation = "secret"
     sherry.save!
 
+    cmuSherry = GroupMember.new
+    cmuSherry.groupId = cmu.id
+    cmuSherry.userId = sherry.id
+    cmuSherry.save!
+
     ian = User.new
     ian.first_name = "Ian"
     ian.last_name = "Go"
@@ -37,6 +46,11 @@ namespace :db do
     ian.password = "secret"
     ian.password_confirmation = "secret"
     ian.save!
+
+    cmuIan = GroupMember.new
+    cmuIan.groupId = cmu.id
+    cmuIan.userId = ian.id
+    cmuIan.save!
 
     hannah = User.new
     hannah.first_name = "Hannah"
@@ -49,6 +63,11 @@ namespace :db do
     hannah.password_confirmation = "secret"
     hannah.save!
 
+    cmuHannah = GroupMember.new
+    cmuHannah.groupId = cmu.id
+    cmuHannah.userId = hannah.id
+    cmuHannah.save!
+
     laura = User.new
     laura.first_name = "Laura"
     laura.last_name = "Lodewyk"
@@ -59,7 +78,12 @@ namespace :db do
     laura.password = "secret"
     laura.password_confirmation = "secret"
     laura.save!
-   
+    
+    cmuLaura = GroupMember.new
+    cmuLaura.groupId = cmu.id
+    cmuLaura.userId = laura.id
+    cmuLaura.save!
+
     run1 = Post.new
     run1.owner_id = ian.id
     run1.title = "Run Around Schenley"

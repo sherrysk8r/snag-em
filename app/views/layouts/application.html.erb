@@ -8,11 +8,11 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag "vendor/modernizr" %>
   <%= csrf_meta_tags %>
-  <%= render :partial => "partials/header" %>
+  <%= render partial: "partials/header" %>
 </head>
 <body>
 <% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+  <%= content_tag :div, msg, id: "flash_#{name}", class: "notice" %>
 <% end %>
 <%= yield %>
 

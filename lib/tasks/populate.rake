@@ -148,17 +148,33 @@ namespace :db do
       user.first_name = Faker::Name.first_name 
       user.email = Faker::Internet.safe_email(user.first_name + '-' + user.last_name)
       user.phone = Faker::Base.numerify('(###)-###-####')
-      user.city = rand(cities.length)
-      user.state = rand(states.length)
+      user.city = cities.sample
+      user.state = states.sample
       user.about_me = "I LOVE THIS APP!"
       user.date_of_birth = Faker::Date.between(30.years.ago, 15.years.ago)
       user.password = "secret"
       user.password_confirmation = "secret"
       user.active = TRUE
       user.save!
-      # FactoryGirl.create(:user, last_name: last_name, first_name: first_name, email: email, phone: phone_number, city: city, state: state, about_me: about_me, date_of_birth: date_of_birth, password: password, password_confirmation: password_confirmation, active: active)
+      
     end
 
-    #create some postss
+    all_users = User.all
+    topics = ["Running", "Lifting", "Swimming", "Ballroom", "Yoga", "Stretching"]
+    #create some posts
+    150.times do
+        post = Post.new
+        post.owner_id = all_users.sample.id
+        post.title = Faker::Lorem.sentence(3, true, 1)
+        post.topic = topics.sample
+        time = Faker::Time.between(1.day.from_now, 5.weeks.from_now, :morning)
+        post.date = time
+        post.start_time = time
+        post.expected_duration_hr = rand(0..2)
+        post.expected_duration_min = rand(1..59)
+        post.cancelled = FALSE
+        post.estimated_difficulty = rand(1..10)
+        post.save!
+    end
   end
 end

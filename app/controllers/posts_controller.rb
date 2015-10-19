@@ -2,8 +2,21 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-  	@posts = Post.not_mine(current_user.id).chronological
+    @posts = Post.not_mine(current_user.id).chronological
     @my_posts = Post.for_owner(current_user.id).chronological
+  end
+
+  def filter_by_workout
+    @filtered_by_workout = Post.filter_by_workout(params[:workout_search])
+  end
+
+  def filter_by_time
+    #@filtered_by_date = Post.filter_by_date(params[:date_search])
+    #@filtered_by_time = Post.filter_by_time(params[:date_search], params[:time_search_start], params[:time_search_stop])
+    @filtered_by_date_and_time = Post.filter_by_date_and_time(params[:date_search], params[:time_search])
+  end
+
+  def find_a_workout
   end
 
   def show

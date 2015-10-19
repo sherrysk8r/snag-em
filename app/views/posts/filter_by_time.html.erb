@@ -1,0 +1,33 @@
+<%= form_tag("/filter_by_workout", method: "get") do %>
+  <%= label_tag(:workout_search, "Search for workout type:") %>
+  <%= text_field_tag :workout_search, params[:workout_search] %>
+  <%= submit_tag("Find me a workout!") %>
+<% end %>
+
+OR <%= link_to "Show me all workouts", posts_path %>
+OR <%= link_to "Search by workout", 'filter_by_workout' %>
+
+<h2>Filtered Workouts</h2>
+<% if @filtered_by_workout.empty? %>
+	<p><em>There are no current posts that match your workout search.</em></p>
+<% else %>
+	<% @filtered_by_workout.each do |p| %>
+		<div class="workout">
+			<div class="row">
+			<div class="small-4 columns">
+				<h3><%= p.title %></h3>
+			</div>
+			<div class="small-4 small-offset-4 columns">
+				<h3><%= p.datetime %></h3>
+			</div>
+			</div>
+			<div class="row">
+				<div class="small-12 columns">
+				<p><%= p.topic %></p>
+				<p><%= p.details %></p>
+				<p><%= link_to "View", post_path(p) %></p>
+				</div>
+			</div>
+		</div>
+	<% end %>
+<% end %>

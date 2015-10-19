@@ -6,10 +6,17 @@ class PostsController < ApplicationController
     @my_posts = Post.for_owner(current_user.id).chronological
   end
 
-  def filter_workouts
+  def filter_by_workout
     @filtered_by_workout = Post.filter_by_workout(params[:workout_search])
     # @filtered_by_time = Post.filter_by_time(params[:date_search], params[:time_search])
     # @filtered_by_date = Post.filter_by_date(params[:date_search])
+  end
+
+  def filter_by_time
+    @filtered_by_workout = Post.filter_by_workout(params[:workout_search])
+  end
+
+  def find_a_workout
   end
 
   def show

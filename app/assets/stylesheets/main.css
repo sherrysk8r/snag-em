@@ -88,6 +88,14 @@ body{
     height: auto;
 }
 
+.img-circle-small {
+    border-radius: 50%;
+    border: 10px solid white;
+   	width: 50%;
+    height: auto;
+    margin-top: 1em;
+}
+
 .profile {
 	border-right: 1px solid #D1D1D1;
 }
@@ -137,4 +145,13 @@ body{
 .workout-content{
 	padding-left: .9375em;
 	padding-right: .9375em;
+}
+
+.profile-name{
+	font-family: Avenir;
+	color: #697689;
+}
+
+.workout-show{
+	padding-top: 2em;
 }

@@ -11,7 +11,7 @@ class Post < ActiveRecord::Base
 	validates_datetime :start, on_or_after: lambda { DateTime.current }, on_or_after_message: "cannot be in the past", on:  :create
 	
 	validates_numericality_of :expected_duration_min, only_integer: true
-	validates_inclusion_of :estimated_difficulty, in: 0..60, message: "must be between 0 and 60"
+	validates_inclusion_of :expected_duration_min, in: 0..60, message: "must be between 0 and 60"
 
 	validates_numericality_of :expected_duration_hr, only_integer: true
 	validates_inclusion_of :expected_duration_hr, in: 0..5, message: "Your event is over 5 hours long?"

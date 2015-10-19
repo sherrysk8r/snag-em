@@ -1,4 +1,7 @@
 <h3><%= @user.proper_name %></h3>
+<% unless @user.photo_url.nil? %>
+  <p><%= image_tag @user.photo_url %></p>
+<% end %>
 <p>
   <b>Email</b>: <%= mail_to @user.email, @user.email, encode: "javascript" %>
 </p>

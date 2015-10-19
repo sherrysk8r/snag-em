@@ -8,12 +8,12 @@ class PostsController < ApplicationController
 
   def filter_by_workout
     @filtered_by_workout = Post.filter_by_workout(params[:workout_search])
-    # @filtered_by_time = Post.filter_by_time(params[:date_search], params[:time_search])
-    # @filtered_by_date = Post.filter_by_date(params[:date_search])
   end
 
   def filter_by_time
-    @filtered_by_workout = Post.filter_by_workout(params[:workout_search])
+    #@filtered_by_date = Post.filter_by_date(params[:date_search])
+    #@filtered_by_time = Post.filter_by_time(params[:date_search], params[:time_search_start], params[:time_search_stop])
+    @filtered_by_date_and_time = Post.filter_by_date_and_time(params[:date_search], params[:time_search])
   end
 
   def find_a_workout

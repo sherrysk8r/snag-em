@@ -5,7 +5,7 @@
 <p><b>Phone</b>: <%= number_to_phone(@user.phone) %>
 </p>
 
-<<<<<<< HEAD
+
 <% if can? :read, @user %>
   <p><b> Phone: </b> <%= @user.phone %> </p>
 <% end %>
@@ -24,7 +24,7 @@
     	</ul>
     <% end %>
   </p>
-=======
+
 <p><b>Upcoming Tagalongs:</b>
   <% if @user_upcoming_tagalongs.empty? %>
     &nbsp;&nbsp;<em>No scheduled tagalongs at this time.</em> Do you want to <%=link_to "schedule", new_post_path %> one? 
@@ -38,7 +38,7 @@
   	</ul>
   <% end %>
 </p>
->>>>>>> ac1ba7a6746b8af8db0307e46db152ee76f63461
+
 
 
   <p><b>Past Tagalongs:</b>

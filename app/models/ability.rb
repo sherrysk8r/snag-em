@@ -15,7 +15,6 @@ class Ability
         end
     else
         can :read, Post
-        can :update, User, :id => user.id
     end
 
   end

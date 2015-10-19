@@ -16,7 +16,7 @@ class TagalongsController < ApplicationController
 			tagalong = Tagalong.find(params[:id])
 			tagalong.approved = true
 			tagalong.save!
-			flash[:notice] = "#{tagalong.user.proper_name} was approved to join you on #{tagalong.post.date.strftime('%m/%d/%Y')} on #{tagalong.post.start_time.strftime('%h:%M %p')}"
+			flash[:notice] = "#{tagalong.user.proper_name} was approved to join you on #{tagalong.post.datetime}"
 			
 			redirect_to pending_url
 		end

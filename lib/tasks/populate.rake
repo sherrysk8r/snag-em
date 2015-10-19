@@ -88,8 +88,7 @@ namespace :db do
     run1.owner_id = ian.id
     run1.title = "Run Around Schenley"
     run1.topic = "Running"
-    run1.date = Date.today + 1
-    run1.start_time = Time.now + 60*60
+    run1.start = DateTime.new(2015, 10, 22, 15, 0, 0)
     run1.expected_duration_hr = 1
     run1.expected_duration_min = 30
     run1.details = "Meet behind Hunt. I will be wearing a IS sweater."
@@ -101,8 +100,7 @@ namespace :db do
     run2.owner_id = sherry.id
     run2.title = "Run Around Schenley"
     run2.topic = "Running"
-    run2.date = Date.today
-    run2.start_time = Time.now + 60*60*3
+    run2.start = DateTime.new(2015, 10, 22, 10, 0, 0)
     run2.expected_duration_hr = 0
     run2.expected_duration_min = 45
     run2.details = "Meet behind Hunt. I will be wearing a IS sweater."
@@ -114,8 +112,7 @@ namespace :db do
     run3.owner_id = hannah.id
     run3.title = "Run Through Squirrel Hill"
     run3.topic = "Running"
-    run3.date = Date.today
-    run3.start_time = Time.now + 60*60*3
+    run3.start = DateTime.new(2015, 10, 22, 16, 0, 0)
     run3.expected_duration_hr = 0
     run3.expected_duration_min = 30
     run3.details = "Meet at Margaret Morrison bus stop. I will be wearing a IS sweater."
@@ -127,8 +124,7 @@ namespace :db do
     run4.owner_id = laura.id
     run4.title = "Run Through Squirrel Hill"
     run4.topic = "Running"
-    run4.date = Date.today + 2
-    run4.start_time = Time.now + 60*60*-5
+    run4.start = DateTime.new(2015, 10, 23, 9, 0, 0)
     run4.expected_duration_hr = 1
     run4.expected_duration_min = 0
     run4.details = "Meet at Margaret Morrison bus stop. I will be wearing a IS sweater."
@@ -140,8 +136,7 @@ namespace :db do
     run5.owner_id = ian.id
     run5.title = "Run to Craig and Back"
     run5.topic = "Running"
-    run5.date = Date.today
-    run5.start_time = Time.now + 60*60*5
+    run5.start = DateTime.new(2015, 10, 22, 13, 30, 0)
     run5.expected_duration_hr = 1
     run5.expected_duration_min = 15
     run5.details = "Meet by Walk to Sky. I will be wearing a IS sweater."
@@ -153,8 +148,7 @@ namespace :db do
     run6.owner_id = laura.id
     run6.title = "Run to Craig and Back"
     run6.topic = "Running"
-    run6.date = Date.today
-    run6.start_time = Time.now + 60*60*5
+    run6.start = DateTime.new(2015, 10, 22, 20, 30, 0)
     run6.expected_duration_hr = 0
     run6.expected_duration_min = 45
     run6.details = "Meet by Walk to Sky. I will be wearing a IS sweater."
@@ -192,8 +186,7 @@ namespace :db do
         post.title = Faker::Lorem.sentence(3, true, 1)
         post.topic = topics.sample
         time = Faker::Time.between(1.day.from_now, 5.weeks.from_now, :morning)
-        post.date = time
-        post.start_time = time
+        post.start = time
         post.expected_duration_hr = rand(0..2)
         post.expected_duration_min = rand(1..59)
         post.cancelled = FALSE

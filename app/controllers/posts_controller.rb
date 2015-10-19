@@ -73,7 +73,7 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:owner_id, :title, :topic, :date, :start_time, :expected_duration_hr, :expected_duration_min, :details, :cancelled, :estimated_difficulty)
+      params.require(:post).permit(:owner_id, :title, :topic, :start, :expected_duration_hr, :expected_duration_min, :details, :cancelled, :estimated_difficulty)
     end
 
     def tagalong_params

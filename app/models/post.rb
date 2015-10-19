@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
 	validates_numericality_of :estimated_difficulty, only_integer: true
 	validates_inclusion_of :estimated_difficulty, in: 1..10, message: "must be between 1 and 10"
 
-	validates_date :date, on_or_after: lambda { Date.today }, on_or_after_message: "cannot be in the past", on:  :create
+	validates_datetime :start, on_or_after: lambda { DateTime.current }, on_or_after_message: "cannot be in the past", on:  :create
 	
 	validates_numericality_of :expected_duration_min, only_integer: true
 	validates_inclusion_of :estimated_difficulty, in: 0..60, message: "must be between 0 and 60"
@@ -22,18 +22,18 @@ class Post < ActiveRecord::Base
 	scope :for_difficulty, ->(difficulty) { where(estimated_difficulty: difficulty) }
 	scope :cancelled, ->{ where(cancelled: true)}
 	scope :not_cancelled, ->{ where(cancelled: false)}
-	scope :chronological, -> {order('date','start_time')}
+	scope :chronological, -> {order('start')}
 
 	def self.upcoming
-		self.where("date > ?", Date.today).where("start_time > ?", Time.now)
+		self.where("start > ?", DateTime.current)
 	end
 
 	def self.past
-		self.where("date <= ?", Date.today).where("start_time <= ?", Time.now)
+		self.where("start <= ?", DateTime.current)
 	end
 
 	def datetime
-		self.date.strftime('%m/%d/%Y') + " (" + self.start_time.strftime('%H:%M %p') + ")"
+		self.start.strftime('%m/%d/%Y (%H:%M %p)')
 	end
 
     def self.filter_by_workout(workout_search)

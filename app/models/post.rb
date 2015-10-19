@@ -32,4 +32,40 @@ class Post < ActiveRecord::Base
 	def datetime
 		self.date.strftime('%m/%d/%Y') + " (" + self.start_time.strftime('%H:%M %p') + ")"
 	end
+
+	# def self.search(search)
+    #   if search
+    #     find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+    #   end
+    # end
+
+    # def self.search(search)
+    #     if search
+    #         self.where("topic LIKE ?", search)
+    #     end
+    # end
+
+    def self.filter_by_workout(workout_search)
+      if workout_search
+        self.where("topic LIKE ?", workout_search)
+      else
+          []
+      end
+    end
+
+    # def self.filter_by_time(date_search, time_search)
+    #     if date_search && time_search
+    #         self.where("date = ?", date_search).where("start_time = ?", time_search)
+    #     else
+    #         []
+    #     end
+    # end
+
+    # def self.filter_by_date(date_search)
+    #     if date_search
+    #         self.where("date = ?", date_search)
+    #     else
+    #         []
+    #     end
+    # end
 end

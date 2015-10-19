@@ -44,14 +44,22 @@ class Post < ActiveRecord::Base
       end
     end
 
-    def self.filter_by_date_and_time(date_search, time_search)
-	if date_search && time_search
-		start = Time.parse(time_search.first)
-		self.where("date = ? AND start_time >= ?", date_search, start)
-	else
-		[]
-	end
+    def self.filter_by_datetime(datetime_search)
+    	if datetime_search
+    		self.where("start >= ?", datetime_search)
+    	else
+    		[]
+    	end
     end
+
+  #   def self.filter_by_date_and_time(date_search, time_search)
+		# if date_search && time_search
+		# 	start = Time.parse(time_search.first)
+		# 	self.where("date = ? AND start_time >= ?", date_search, start)
+		# else
+		# 	[]
+		# end
+  #   end
 
     # def self.filter_by_time(date_search, time_search_start, time_search_stop)
     # 	if date_search && time_search_start && time_search_stop

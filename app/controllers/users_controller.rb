@@ -4,8 +4,8 @@ class UsersController < ApplicationController
   def show
     @user_upcoming_posts = Post.for_owner(@user.id).upcoming
     @user_past_posts = Post.for_owner(@user.id).past
-    @user_upcoming_tagalongs = Tagalong.for_user(@user.id).upcoming
-    @user_past_tagalongs = Tagalong.for_user(@user.id).past
+    @user_upcoming_tagalongs = Tagalong.upcoming.for_user(@user.id)
+    @user_past_tagalongs = Tagalong.past.for_user(@user.id)
   end
 
   def new

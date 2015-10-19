@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new', :as => :login
   get 'logout' => 'sessions#destroy', :as => :logout
 
-  get 'filter_workouts', :to => 'posts#filter_workouts'
+  get 'find_a_workout', :to => 'posts#find_a_workout'
+  get 'filter_by_workout', :to => 'posts#filter_by_workout'
+  get 'filter_by_time', :to => 'posts#filter_by_time'
 
   root to: 'home#index', as: :home
 end

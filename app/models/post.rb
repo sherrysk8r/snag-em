@@ -1,4 +1,7 @@
 class Post < ActiveRecord::Base
+	require 'date'
+	require 'time'
+
 	has_many :tagalongs
 	belongs_to :user, foreign_key: "owner_id"
 
@@ -33,18 +36,6 @@ class Post < ActiveRecord::Base
 		self.date.strftime('%m/%d/%Y') + " (" + self.start_time.strftime('%H:%M %p') + ")"
 	end
 
-	# def self.search(search)
-    #   if search
-    #     find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
-    #   end
-    # end
-
-    # def self.search(search)
-    #     if search
-    #         self.where("topic LIKE ?", search)
-    #     end
-    # end
-
     def self.filter_by_workout(workout_search)
       if workout_search
         self.where("topic LIKE ?", workout_search)
@@ -53,13 +44,25 @@ class Post < ActiveRecord::Base
       end
     end
 
-    # def self.filter_by_time(date_search, time_search)
-    #     if date_search && time_search
-    #         self.where("date = ?", date_search).where("start_time = ?", time_search)
+    def self.filter_by_date_and_time(date_search, time_search)
+	if date_search && time_search
+		start = Time.parse(time_search.first)
+		self.where("date = ? AND start_time >= ?", date_search, start)
+	else
+		[]
+	end
+    end
+
+    # def self.filter_by_time(date_search, time_search_start, time_search_stop)
+    # 	if date_search && time_search_start && time_search_stop
+    # 		start = Time.parse(time_search_start.first)
+    # 		stop = Time.parse(time_search_stop.first)
+    # 		self.where("date = ? AND start_time >= ? AND start_time <= ?", date_search, start, stop)
     #     else
     #         []
     #     end
     # end
+
 
     # def self.filter_by_date(date_search)
     #     if date_search

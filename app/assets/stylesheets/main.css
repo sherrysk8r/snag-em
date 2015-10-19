@@ -13,7 +13,8 @@
 	background-color:#697689 !important;
 	border: #697689 solid 1px !important;
 	color: #37D67A !important;
-	padding-top: .4rem !important
+	padding-top: .3rem !important;
+	font-family: Montserrat !important;
 }
 
 .log-in:hover{
@@ -24,7 +25,8 @@
 .sign-up{
 	background-color: transparent !important;
 	border: white solid 1px !important;
-	padding-top: .4rem !important
+	padding-top: .3rem !important;
+	font-family: Montserrat !important;
 }
 
 .sign-up:hover{
@@ -69,4 +71,28 @@
 .row.full-width {
   width: 100%;
   max-width: 100%; 
+}
+
+body{
+	background-color: #F7F7F7;
+	font-family: Avenir;
+}
+
+.img-circle {
+    border-radius: 50%;
+    border: 10px solid white;
+    width: 75%;
+    height: auto;
+}
+
+.profile {
+	border-right: 1px solid #D1D1D1;
+}
+
+.mont {
+	font-family: Montserrat !important;
+}
+
+.profile-page .columns{
+	padding-top: 1em;
 }

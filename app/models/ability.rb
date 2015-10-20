@@ -9,12 +9,11 @@ class Ability
     elsif user.role? :user
         can :update, User, :id => user.id
         can :update, Post, :owner_id => user.id
-        can :update, Tagalong, :user_id => user.user_id
-        can :read, User do |user|
-            user.id == user.tagalong.post.owner_id
-        end
-    else
+        can :update, Tagalong, :id => user.id
         can :read, Post
+        can :read, User
+    else
+        can :update, User, :id => user.id
     end
 
   end

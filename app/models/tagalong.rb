@@ -6,6 +6,7 @@ class Tagalong < ActiveRecord::Base
 	scope :for_user,   ->(user_id) { where(user_id: user_id) }
 	# scope :upcoming, -> { joins(:post).where('upcoming') }
 	# scope :past, -> { joins(:post).where('past') }
+	scope :approved_tagalongs, -> { where(approved: true)}
 
 	validates_uniqueness_of :user_id, :scope => :post_id
 

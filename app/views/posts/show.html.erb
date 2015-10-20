@@ -10,16 +10,18 @@
 
 <h2> Tagalongs: </h2>
 <% @post.tagalongs.each do |tagalong| %>
-  <div style="border:1px solid black">
-    <p><%= tagalong.user.first_name %> <%= tagalong.user.last_name%></p>
-    <% if current_user.id == @post.owner_id %> 
-      <%= simple_form_for tagalong do |f| %>
-        <p>Showed Up? <%= tagalong.showed_up %>
-          <%= f.hidden_field :showed_up, value: !tagalong.showed_up %>
-        <%= f.button :submit, value: "Toggle Showed Up" %> </p>
+  <% if tagalong.approved == true %>
+    <div style="border:1px solid black">
+      <p><%= tagalong.user.first_name %> <%= tagalong.user.last_name%></p>
+      <% if current_user.id == @post.owner_id %> 
+        <%= simple_form_for tagalong do |f| %>
+          <p>Showed Up? <%= tagalong.showed_up %>
+            <%= f.hidden_field :showed_up, value: !tagalong.showed_up %>
+          <%= f.button :submit, value: "Toggle Showed Up" %> </p>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 <% end %>
 
 <% if !(Tagalong.exists?(:user_id => current_user.id, :post_id => @post.id )) && current_user.id != @post.owner_id %>

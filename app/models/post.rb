@@ -21,6 +21,7 @@ class Post < ActiveRecord::Base
 	scope :not_cancelled, ->{ where(cancelled: false)}
 	scope :chronological, -> {order('date','start_time')}
 
+
 	def self.upcoming
 		self.where("date > ?", Date.today).where("start_time > ?", Time.now)
 	end

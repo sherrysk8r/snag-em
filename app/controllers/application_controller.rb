@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to login_url, :alert => "You must sign in to perform this action"
+  end
+
   private
   # Handling authentication
   def current_user

@@ -2,13 +2,10 @@
 <p>
   <b>Email</b>: <%= mail_to @user.email, @user.email, encode: "javascript" %>
 </p>
-<p><b>Phone</b>: <%= number_to_phone(@user.phone) %>
-</p>
 
+<p><b> Phone: </b> <%= @user.phone %> </p>
 
-<% if can? :read, @user %>
-  <p><b> Phone: </b> <%= @user.phone %> </p>
-<% end %>
+<p><b> Role: </b> <%= @user.role %> </p>
 
 <% if can? :update, @user %>
   <p><b>Upcoming Tagalongs:</b>

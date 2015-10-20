@@ -50,4 +50,5 @@ class User < ActiveRecord::Base
 	def reformat_phone
 	    self.phone = self.phone.to_s.gsub(/[^0-9]/,"")
     end
+
 end

@@ -3,7 +3,9 @@
   <b>Email</b>: <%= mail_to @user.email, @user.email, encode: "javascript" %>
 </p>
 
-<p><b> Phone: </b> <%= @user.phone %> </p>
+<% if can? :update, @user %>
+  <p><b> Phone: </b> <%= @user.phone %> </p>
+<% end %>
 
 
 <% if can? :update, @user %>
@@ -14,32 +16,18 @@
       <ul>
     		<% @user_upcoming_tagalongs.each do |tagalong| %>
           <li><%= tagalong.post.title %>  @  <%= tagalong.post.datetime %>) <br>
-              Contact <%= tagalong.post.user.first_name %> at <%= tagalong.post.user.phone %>
+              Contact <%= tagalong.post.user.first_name %> at <%= number_to_phone(tagalong.post.user.phone) %>
           </li>
     		<% end %>
     	</ul>
     <% end %>
   </p>
 
-<p><b>Upcoming Tagalongs:</b>
-  <% if @user_upcoming_tagalongs.empty? %>
-    &nbsp;&nbsp;<em>No scheduled tagalongs at this time.</em> Do you want to <%=link_to "schedule", new_post_path %> one? 
-  <% else %>
-    <ul>
-  		<% @user_upcoming_tagalongs.each do |tagalong| %>
-        <li><%= tagalong.post.title %>  @  <%= tagalong.post.datetime %>) <br>
-            Contact <%= tagalong.post.user.first_name %> at <%= number_to_phone(tagalong.post.user.phone) %>
-        </li>
-  		<% end %>
-  	</ul>
-  <% end %>
-</p>
-
 
 
   <p><b>Past Tagalongs:</b>
     <% if @user_past_tagalongs.empty? %>
-      &nbsp;&nbsp;<em>No past workouts at this time.</em>
+      &nbsp;&nbsp;<em>No past tagalongs at this time.</em>
     <% else %>
       <ul>
         <% @user_past_tagalongs.each do |tagalong| %>

@@ -1,34 +1,63 @@
-<%= form_tag("/filter_by_time", method: "get") do %>
-  <%= label_tag(:datetime_search, "Search for a day you'd like to workout:") %>
-  <%= date_field :datetime_search, params[:datetime_Search], as: :html %>
-
-  <%= submit_tag("Find me a workout!") %>
-<% end %>
-
-OR <%= link_to "Show me all workouts", posts_path %>
-OR <%= link_to "Search by workout", 'filter_by_workout' %>
-
-<h2>Filtered Workouts by time too</h2>
-<% if @filtered_by_datetime.empty? %>
-	<p><em>There are no current posts that match your workout search.</em></p>
-<% else %>
-	<% @filtered_by_datetime.each do |p| %>
-		<div class="workout">
-			<div class="row">
-			<div class="small-4 columns">
-				<h3><%= p.title %></h3>
+<div class="row full-width">
+	<div class="small-12 medium-4 columns my-events">
+		<div class="row">
+			<div class="small-12 columns section-header">
+				<h4 class="avenir-header">Filter workout:</h4>
 			</div>
-			<div class="small-4 small-offset-4 columns">
-				<h3><%= p.datetime %></h3>
-			</div>
-			</div>
-			<div class="row">
-				<div class="small-12 columns">
-				<p><%= p.topic %></p>
-				<p><%= p.details %></p>
-				<p><%= link_to "View", post_path(p) %></p>
+		</div>
+		<div class="row">
+			<div class="small-12 columns workout">
+				<div class="row workout-content">
+					<div class="small-12 columns">
+						<h4 class="workout-title"></h4>
+						<%= form_tag("/filter_by_time", method: "get") do %>
+						  <%= label_tag(:datetime_search, "Search for a day you'd like to workout:") %>
+						  <%= date_field :datetime_search, params[:datetime_Search], as: :html %>
+						  <%= submit_tag("Find me a workout!", class: "button round home-button") %>
+						<% end %>
+					</div>
+				</div>
+				<div class="row workout-content">
+					<div class="small-12 columns">
+						<br>
+						<p><%= link_to "Search by workout type", 'filter_by_workout' %> OR <%= link_to "show me all workouts", posts_path %></p>
+					</div>
 				</div>
 			</div>
 		</div>
-	<% end %>
-<% end %>
+	</div>
+	<div class="small-12 medium-8 columns">
+		<div class="row">
+			<div class="small-12 columns section-header">
+				<h4 class="avenir-header">Filtered workouts by date:</h4>
+			</div>
+		</div>
+		<% if @filtered_by_datetime.empty? %>
+			<p><em>There are no current posts that match your workout search.</em></p>
+		<% else %>
+			<% @filtered_by_datetime.each do |p| %>
+				<div class="row">
+					<div class="small-12 columns workout">
+						<div class="row workout-content">
+							<div class="small-4 columns">
+								<h4 class="workout-title"><%= p.title %></h4>
+							</div>
+							<div class="small-5 small-offset-3 end columns">
+								<h4 class="workout-time"><%= p.datetime %></h4>
+							</div>
+						</div>
+						<div class="row workout-content">
+							<div class="small-12 columns">
+								<p><%= p.topic %></p>
+							</div>
+							<div class="small-12 columns">
+								<p><%= p.details %></p>
+								<p><%= link_to "View", post_path(p) %></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
+</div>

@@ -14,6 +14,7 @@ class PostsController < ApplicationController
   end
 
   def new
+    authorize! :create, Post
     @post = Post.new
   end
 
@@ -21,7 +22,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    authorize! :create, @post
+    authorize! :create, Post
     params[:post][:owner_id] = current_user.id
     params[:post][:date] = Chronic.parse(post_params[:date])
   	

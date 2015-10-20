@@ -11,6 +11,7 @@ class Ability
         can :update, Post, :owner_id => user.id
         can :update, Tagalong, :id => user.id
         can :read, Post
+        can :create, Post
         can :read, User
     else
         can :update, User, :id => user.id

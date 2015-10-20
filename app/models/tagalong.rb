@@ -11,11 +11,11 @@ class Tagalong < ActiveRecord::Base
 	validates_uniqueness_of :user_id, :scope => :post_id
 
 	def self.upcoming
-		self.joins(:post).where("date > ?", Date.today).where("start_time > ?", Time.now).where("approved == ?", true)
+		self.joins(:post).where("start > ?", Date.today).where("approved == ?", true)
 	end
 
 	def self.past
-		self.joins(:post).where("date <= ?", Date.today).where("start_time <= ?", Time.now).where("showed_up == ?", true)
+		self.joins(:post).where("start <= ?", Date.today).where("showed_up == ?", true)
 	end
 
 	def mark_as_showed_up

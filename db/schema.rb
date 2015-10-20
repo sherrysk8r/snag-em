@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20151019191457) do
 
   create_table "group_members", force: :cascade do |t|

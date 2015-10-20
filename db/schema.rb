@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20151019191457) do
     t.boolean  "active"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "role"
     t.string   "photo"
   end
 

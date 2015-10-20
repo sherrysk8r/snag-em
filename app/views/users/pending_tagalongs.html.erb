@@ -6,6 +6,7 @@
 			<td><% if pt.approved.nil? || pt.approved == false %> 
                 <%= link_to edit_tagalong_path(id: pt.id, status: "approved") do %>
                   <%= image_tag 'checkmark_empty.png', class: 'checkmark' %>
+                  <% pt.user.role = 'tagalong' %>
                 <% end %>
               <% end %>
             </td>

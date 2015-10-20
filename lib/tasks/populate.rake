@@ -29,6 +29,7 @@ namespace :db do
     sherry.active = true
     sherry.password = "secret"
     sherry.password_confirmation = "secret"
+    sherry.role = :user
     sherry.save!
 
     cmuSherry = GroupMember.new
@@ -45,6 +46,7 @@ namespace :db do
     ian.active = true
     ian.password = "secret"
     ian.password_confirmation = "secret"
+    ian.role = :user
     ian.save!
 
     cmuIan = GroupMember.new
@@ -61,6 +63,7 @@ namespace :db do
     hannah.active = true
     hannah.password = "secret"
     hannah.password_confirmation = "secret"
+    hannah.role = :user
     hannah.save!
 
     cmuHannah = GroupMember.new
@@ -77,6 +80,7 @@ namespace :db do
     laura.active = true
     laura.password = "secret"
     laura.password_confirmation = "secret"
+    laura.role = :user
     laura.save!
     
     cmuLaura = GroupMember.new

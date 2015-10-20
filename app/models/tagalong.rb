@@ -4,19 +4,23 @@ class Tagalong < ActiveRecord::Base
 	has_one :review
 
 	scope :for_user,   ->(user_id) { where(user_id: user_id) }
-	
+	# scope :upcoming, -> { joins(:post).where('upcoming') }
+	# scope :past, -> { joins(:post).where('past') }
+	scope :approved_tagalongs, -> { where(approved: true)}
+
 	validates_uniqueness_of :user_id, :scope => :post_id
 
 	def self.upcoming
-		self.joins(:post).where("start > ?", DateTime.current)
+		self.joins(:post).where("start > ?", Date.today).where("approved == ?", true)
 	end
 
 	def self.past
-		self.joins(:post).where("start <= ?", DateTime.current)
+		self.joins(:post).where("start <= ?", Date.today).where("showed_up == ?", true)
 	end
 
 	def mark_as_showed_up
 		self.showed_up = true
 		self.save!
 	end
+
 end

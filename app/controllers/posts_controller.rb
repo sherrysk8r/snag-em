@@ -2,7 +2,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.not_mine(current_user.id).chronological
+    authorize! :read, Post
+  	@posts = Post.not_mine(current_user.id).chronological
     @my_posts = Post.for_owner(current_user.id).chronological
   end
 
@@ -21,9 +22,13 @@ class PostsController < ApplicationController
   end
 
   def show
+    authorize! :read, @post
+    @post = Post.find(params[:id])
+    authorize! :read, @post
   end
 
   def new
+    authorize! :create, Post
     @post = Post.new
   end
 
@@ -31,6 +36,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    authorize! :create, Post
     params[:post][:owner_id] = current_user.id
     params[:post][:date] = Chronic.parse(post_params[:date])
   	

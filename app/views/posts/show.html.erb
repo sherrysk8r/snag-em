@@ -1,31 +1,60 @@
-<h2> Details: </h2> 
-<p> Title: <%= @post.title %> </p>
-<p> Owner: <%= link_to @post.user.proper_name, user_path(@post.owner_id) %> </p> 
-<p> Topic: <%= @post.topic %> </p>
-<p> Begins: <%= @post.datetime %> </p>
-<p> Expected Duration: <%= @post.expected_duration_hr %> Hours <%= @post.expected_duration_min %> Minutes</p>
-<p> Details: <%= @post.details %> </p>
-<p> Cancelled: <%= @post.cancelled %> </p>
-<p> Estimated Difficulty: <%= @post.estimated_difficulty %> </p>
-
-<h2> Tagalongs: </h2>
-<% @post.tagalongs.each do |tagalong| %>
-  <% if tagalong.approved == true %>
-    <div style="border:1px solid black">
-      <p><%= tagalong.user.first_name %> <%= tagalong.user.last_name%></p>
-      <% if current_user.id == @post.owner_id %> 
-        <%= simple_form_for tagalong do |f| %>
-          <p>Showed Up? <%= tagalong.showed_up %>
-            <%= f.hidden_field :showed_up, value: !tagalong.showed_up %>
-          <%= f.button :submit, value: "Toggle Showed Up" %> </p>
-        <% end %>
-      <% end %>
+<div class="row">
+    <div class="row">
+      <div class="small-12 columns section-header">
+        <h4 class="avenir-header workout-title"><%= @post.title %></h4>
+      </div>
     </div>
-  <% end %>
-<% end %>
+    <div class="row workout-show">
+      <div class="small-3 columns text-center">
+        <h4 class="profile-name"><%= @post.user.proper_name %></h4>
+        <% if @post.user.photo_url.nil? %>
+          <p class="text-center"><img src="http://loremflickr.com/320/320/headshot/all" class="img-circle-small"></p>
+        <% else %>
+          <p class="text-center"><%= image_tag @post.user.photo_url, :class => 'img-circle-small'%></p>
+        <% end %>
+      </div>
+      <div class="small-9 columns">
+        <div class="row">
+          <div class="small-4 columns">
+            <h4 class="workout-title"><%= @post.topic %></h4>
+          </div>
+          <div class="small-5 small-offset-3 end columns">
+            <h4 class="workout-time"><%= @post.datetime %></h4>
+          </div>
+        </div>
+        <div class="row workout-show">
+          <div class="small-12 columns">
+            <p><%= @post.details %></p>
+          </div>
+          <div class="small-12 columns">
+            <p>Estimated Difficulty: <%= @post.estimated_difficulty %></p>
+          </div>
+          <div class="small-12 columns">
+            <p> Expected Duration: <%= @post.expected_duration_hr %> Hours <%= @post.expected_duration_min %> Minutes</p>
+            <% if @post.cancelled == true %>
+            <p> Cancelled: <%= @post.cancelled %> </p>
+            <% end %>
+          </div>
+          <div class="small-12 columns">
+            <% @post.tagalongs.each do |tagalong| %>
+              <div style="border:1px solid black">
+                <p><%= tagalong.user.first_name %> <%= tagalong.user.last_name%></p>
+                <% if current_user.id == @post.owner_id %> 
+                  <%= simple_form_for tagalong do |f| %>
+                    <p>Showed Up? <%= tagalong.showed_up %>
+                      <%= f.hidden_field :showed_up, value: !tagalong.showed_up %>
+                    <%= f.button :submit, value: "Toggle Showed Up" %> </p>
+                  <% end %>
+                <% end %>
+              </div>
+            <% end %>
 
-<% if !(Tagalong.exists?(:user_id => current_user.id, :post_id => @post.id )) && current_user.id != @post.owner_id %>
-  <%= render partial: "addtagalong_form", locals: { post: @post} %>
-<% end %>
-
-<%= link_to "Back", posts_path %>
+            <% if !(Tagalong.exists?(:user_id => current_user.id, :post_id => @post.id )) && current_user.id != @post.owner_id %>
+              <%= render partial: "addtagalong_form", locals: { post: @post} %>
+            <% end %>
+          </div>
+          <%= link_to "Back", posts_path %>
+        </div>
+      </div>
+    </div>
+</div>

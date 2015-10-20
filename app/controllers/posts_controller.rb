@@ -7,6 +7,20 @@ class PostsController < ApplicationController
     @my_posts = Post.for_owner(current_user.id).chronological
   end
 
+  def filter_by_workout
+    @filtered_by_workout = Post.filter_by_workout(params[:workout_search])
+  end
+
+  def filter_by_time
+    #@filtered_by_date = Post.filter_by_date(params[:date_search])
+    #@filtered_by_time = Post.filter_by_time(params[:date_search], params[:time_search_start], params[:time_search_stop])
+    #@filtered_by_date_and_time = Post.filter_by_date_and_time(params[:date_search], params[:time_search])
+    @filtered_by_datetime = Post.filter_by_datetime(params[:datetime_search])
+  end
+
+  def find_a_workout
+  end
+
   def show
     authorize! :read, @post
     @post = Post.find(params[:id])
@@ -66,7 +80,7 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:owner_id, :title, :topic, :date, :start_time, :expected_duration, :details, :cancelled, :estimated_difficulty)
+      params.require(:post).permit(:owner_id, :title, :topic, :start, :expected_duration_hr, :expected_duration_min, :details, :cancelled, :estimated_difficulty)
     end
 
     def tagalong_params

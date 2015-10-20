@@ -1,78 +1,86 @@
-<h3><%= @user.proper_name %></h3>
-<p>
-  <b>Email</b>: <%= mail_to @user.email, @user.email, encode: "javascript" %>
-</p>
-
-<% if can? :update, @user %>
-  <p><b> Phone: </b> <%= @user.phone %> </p>
-<% end %>
-
-
-<% if can? :update, @user %>
-  <p><b>Upcoming Tagalongs:</b>
-    <% if @user_upcoming_tagalongs.empty? %>
-      &nbsp;&nbsp;<em>No scheduled tagalongs at this time.</em> Do you want to <%=link_to "schedule", new_post_path %> one? 
+<div class="row profile-page">
+  <div class="small-12 medium-4 columns profile">
+    <h3 class="text-center mont"><%= @user.proper_name %></h3>
+    <% if @user.photo_url.nil? %>
+      <p class="text-center"><img src="http://loremflickr.com/320/320/headshot/all" class="img-circle"></p>
     <% else %>
-      <ul>
-    		<% @user_upcoming_tagalongs.each do |tagalong| %>
-          <li><%= tagalong.post.title %>  @  <%= tagalong.post.datetime %>) <br>
-              Contact <%= tagalong.post.user.first_name %> at <%= number_to_phone(tagalong.post.user.phone) %>
-          </li>
-    		<% end %>
-    	</ul>
+      <p class="text-center"><%= image_tag @user.photo_url, :class => 'img-circle'%></p>
     <% end %>
-  </p>
+    <p>
+      <b>Email</b>: <%= mail_to @user.email, @user.email, encode: "javascript" %>
+    </p>
+    <% if can? :update, @user %>
+      <p><b> Phone: </b> <%= @user.phone %> </p>
+    <% end %>
+    </p>
+    <p>
+      <b>About Me</b>: <%= @user.about_me %>
+    </p>
+  </div>
 
 
+  <div class="small-12 medium-8 columns">
+    <% if can? :update, @user %>
+      <p><b>Upcoming Tagalongs:</b>
+      <% if @user_upcoming_tagalongs.empty? %>
+        &nbsp;&nbsp;<em>No scheduled tagalongs at this time.</em> Do you want to <%=link_to "schedule", new_post_path %> one? 
+      <% else %>
+        <ul>
+          <% @user_upcoming_tagalongs.each do |tagalong| %>
+            <li><%= tagalong.post.title %>  @  <%= tagalong.post.datetime %>) <br>
+                Contact <%= tagalong.post.user.first_name %> at <%= number_to_phone(tagalong.post.user.phone) %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </p>
 
-  <p><b>Past Tagalongs:</b>
-    <% if @user_past_tagalongs.empty? %>
-      &nbsp;&nbsp;<em>No past tagalongs at this time.</em>
-    <% else %>
-      <ul>
-        <% @user_past_tagalongs.each do |tagalong| %>
-            <div style="border:1px solid black">
-              <li><%= tagalong.post.title %>  @  <%= tagalong.post.datetime %></li>
-              <% if tagalong.review != nil %>
-                <%= render :partial => "show_review", locals:{ tagalong: tagalong} %>
-              <% else %>
-                <%= render :partial => "review_form", locals: { tagalong: tagalong} %>
-              <% end %>
-            </div>
+    <p><b>Past Tagalongs:</b>
+      <% if @user_past_tagalongs.empty? %>
+        &nbsp;&nbsp;<em>No past workouts at this time.</em>
+      <% else %>
+        <ul>
+          <% @user_past_tagalongs.each do |tagalong| %>
+              <div style="border:1px solid black">
+                <li><%= tagalong.post.title %>  @  <%= tagalong.post.datetime %></li>
+                <% if tagalong.review != nil %>
+                  <%= render partial: "show_review", locals:{ tagalong: tagalong} %>
+                <% else %>
+                  <%= render partial: "review_form", locals: { tagalong: tagalong} %>
+                <% end %>
+              </div>
+          <% end %>
+        </ul>
+      <% end %>
+    </p>
+    <% end %>
+
+    <p><b>Upcoming Events:</b>
+      <% if @user_upcoming_posts.empty? %>
+        &nbsp;&nbsp;<em>No scheduled workouts at this time.</em> Do you want to <%=link_to "schedule", new_post_path %> one? 
+      <% else %>
+        <ul>
+          <% @user_upcoming_posts.each do |post| %>
+            <li><%= post.title %>  @  <%= post.datetime %> </li>
+          <%end %>
+        </ul>
+      <% end %>
+    </p>
+
+    <% if can? :update, @user %>
+      <p><b>Past Events:</b>
+        <% if @user_past_posts.empty? %>
+          &nbsp;&nbsp;<em>No past workouts at this time.</em>
+        <% else %>
+          <ul>
+            <% @user_past_posts.each do |post| %>
+              <li><%= post.title %>  @  <%= post.datetime %></li>
+            <% end %>
+          </ul>
         <% end %>
-      </ul>
+      </p>
     <% end %>
-  </p>
-<% end %>
-
-
-<p><b>Upcoming Events:</b>
-  <% if @user_upcoming_posts.empty? %>
-    &nbsp;&nbsp;<em>No scheduled workouts at this time.</em> Do you want to <%=link_to "schedule", new_post_path %> one? 
-  <% else %>
-    <ul>
-      <% @user_upcoming_posts.each do |post| %>
-        <li><%= post.title %>  @  <%= post.datetime %> </li>
-      <%end %>
-    </ul>
-  <% end %>
-</p>
-
-<% if can? :update, @user %>
-  <p><b>Past Events:</b>
-    <% if @user_past_posts.empty? %>
-      &nbsp;&nbsp;<em>No past workouts at this time.</em>
-    <% else %>
-      <ul>
-        <% @user_past_posts.each do |post| %>
-          <li><%= post.title %>  @  <%= post.datetime %></li>
-        <% end %>
-      </ul>
-    <% end %>
-  </p>
-
-  <p>
-    <b>About Me</b>: <%= @user.about_me %>
-  </p>
-<% end %>
+    
+  </div>
+</div>
 

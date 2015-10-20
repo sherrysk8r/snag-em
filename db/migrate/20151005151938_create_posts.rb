@@ -4,8 +4,7 @@ class CreatePosts < ActiveRecord::Migration
       t.integer :owner_id
       t.string :title
       t.string :topic
-      t.date :date
-      t.time :start_time
+      t.datetime :start
       t.integer :expected_duration_hr
       t.integer :expected_duration_min
       t.text :details

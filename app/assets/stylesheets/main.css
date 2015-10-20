@@ -13,7 +13,8 @@
 	background-color:#697689 !important;
 	border: #697689 solid 1px !important;
 	color: #37D67A !important;
-	padding-top: .4rem !important
+	padding-top: .3rem !important;
+	font-family: Montserrat !important;
 }
 
 .log-in:hover{
@@ -24,7 +25,8 @@
 .sign-up{
 	background-color: transparent !important;
 	border: white solid 1px !important;
-	padding-top: .4rem !important
+	padding-top: .3rem !important;
+	font-family: Montserrat !important;
 }
 
 .sign-up:hover{
@@ -63,10 +65,93 @@
 }
 
 .workout{
-	border: 1px #D1D1D1 solid;
+	padding-left: 0;
+	padding-right: 0;
+	border-bottom: 1px #D1D1D1 solid;
+	border-left: 1px #D1D1D1 solid;
 }
 
 .row.full-width {
   width: 100%;
   max-width: 100%; 
+}
+
+body{
+	background-color: #F7F7F7;
+	font-family: Avenir;
+}
+
+.img-circle {
+    border-radius: 50%;
+    border: 10px solid white;
+    width: 75%;
+    height: auto;
+}
+
+.img-circle-small {
+    border-radius: 50%;
+    border: 10px solid white;
+   	width: 50%;
+    height: auto;
+    margin-top: 1em;
+}
+
+.profile {
+	border-right: 1px solid #D1D1D1;
+}
+
+.mont {
+	font-family: Montserrat !important;
+}
+
+.profile-page .columns{
+	padding-top: 1em;
+}
+
+.my-events{
+}
+
+.avenir-header{
+	font-family: Avenir;
+	color: #697689;
+	padding-left: .9375em;
+	padding-right: .9375em;
+	padding-top: .4em;
+	padding-bottom: .2em;
+}
+
+.section-header{
+	padding-left: 0;
+	padding-right: 0;
+	border-bottom: 1px solid #D1D1D1;
+}
+
+.no-padding{
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.workout-title{
+	font-family: Avenir;
+	color: #697689;
+	font-weight: bold;
+}
+
+.workout-time{
+	font-family: Avenir;
+	color: #697689;
+}
+
+.workout-content{
+	padding-left: .9375em;
+	padding-right: .9375em;
+}
+
+.profile-name{
+	font-family: Avenir;
+	color: #697689;
+}
+
+.workout-show{
+	padding-top: 2em;
 }

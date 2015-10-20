@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+	mount_uploader :photo, PhotoUploader
+
 	has_many :posts, foreign_key: "owner_id"
 	has_many :tagalongs
 

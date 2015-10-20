@@ -4,8 +4,8 @@ class UsersController < ApplicationController
   def show
     @user_upcoming_posts = Post.for_owner(@user.id).upcoming
     @user_past_posts = Post.for_owner(@user.id).past
-    @user_upcoming_tagalongs = Tagalong.for_user(@user.id).upcoming
-    @user_past_tagalongs = Tagalong.for_user(@user.id).past
+    @user_upcoming_tagalongs = Tagalong.upcoming.for_user(@user.id)
+    @user_past_tagalongs = Tagalong.past.for_user(@user.id)
   end
 
   def new
@@ -49,6 +49,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :phone, :city, :state, :about_me, :date_of_birth, :password, :password_confirmation, :active, :role)
+      params.require(:user).permit(:first_name, :last_name, :email, :phone, :city, :state, :about_me, :photo, :date_of_birth, :password, :password_confirmation, :active, :role)
     end
 end

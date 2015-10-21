@@ -1,7 +1,10 @@
 #67-475 Cycle 2
+- Sherry Chen
+- Ian Go
+- Laura Lodewyk
+- Hannah Douglas
 
-We want to help connect people who have made it a habit to always stick to their routine, and those who want to get involved in exercise.
-
+Snag'em is the latest workout/sharing-economy app. It connects more experienced athletes with less experienced athletes, taking advantage of the statistically likely chance that experienced athletes will follow-through on workouts, and in-person committments motivate less experienced athletes more than current technologies. Snag'em allows users to coach activities they are comfortable in, and tagalong on events that they are newer to them.
 ##To Get Started:
 
 ```

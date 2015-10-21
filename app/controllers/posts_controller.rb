@@ -39,7 +39,7 @@ class PostsController < ApplicationController
     authorize! :create, Post
     params[:post][:owner_id] = current_user.id
     params[:post][:start] = Chronic.parse(post_params[:start])
-  	
+  	params[:post][:cancelled] = FALSE
     @post = Post.new(post_params)
   	
     if @post.save

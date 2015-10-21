@@ -1,1 +1,25 @@
-<%= render 'form' %>
+<div class="row">
+	<div class="small-8 columns">
+		<div class="row">
+			<div class="small-12 columns section-header">
+		        <h4 class="avenir-header">Post a Workout</h4>
+		     </div>
+				<%= simple_form_for @post do |f| %>
+				<div class="row">
+					<div class="small-12 columns">
+					  <%= f.input :title %>
+					</div>
+				</div>
+				  <%= f.input :topic %>
+				  <%= f.input :start,  label: "Workout Date", as: :datetime %>
+				  <%= f.input :expected_duration_hr, label: "Expected Duration (Hour)" %>
+				  <%= f.input :expected_duration_min, label: "Expected Duration (Min)" %>
+				  <%= f.input :details %>
+				  <%= f.input :cancelled, label: "Cancel Your Event" %>
+				  <%= f.input :estimated_difficulty, collection: 1..10 %>
+				  <%= f.button :submit, class: "round tagalong-button fix-button" %>
+				  <%= link_to "Back", posts_path, :class => 'button round snag-button fix-button' %>
+				<% end %>
+		</div>
+	</div>
+</div>

@@ -3,10 +3,10 @@
 		<%= simple_form_for @post do |f| %>
 		  <%= f.input :title %>
 		  <%= f.input :topic %>
-		  <%= f.input :date, as: :string, start_date: Date.today, input_html: {class: "datepicker"} %>
-		  <%= f.input :start_time %>
-		  <%= f.input :expected_duration_hr, label: "Hour" %>
-		  <%= f.input :expected_duration_min, label: "Min" %>
+		  <!-- Need to insert datetime picker -->
+		  <%= f.input :start, as: :string, start_date: Date.today, input_html: {class: "datepicker"}, label: "Start Date and Time" %>
+		  <%= f.input :expected_duration_hr, label: "Expected Duration (Hour)" %>
+		  <%= f.input :expected_duration_min, label: "Expected Duration (Min)" %>
 		  <%= f.input :details %>
 		  <%= f.input :cancelled %>
 		  <%= f.input :estimated_difficulty %>

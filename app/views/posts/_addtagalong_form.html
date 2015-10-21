@@ -3,5 +3,5 @@
   <%= f.hidden_field :user_id,  value: current_user.id %>
   <%= f.hidden_field :post_id, value: @post.id %>
   <%= f.hidden_field :showed_up, value: false %>
-  <%= f.button :submit, "Request to Tagalong" %>
+  <%= f.button :submit, "Request to Tagalong", {class: "round tagalong-button fix-button"} %>
 <% end %>

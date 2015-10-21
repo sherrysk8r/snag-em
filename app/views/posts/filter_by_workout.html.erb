@@ -12,7 +12,7 @@
 						<h4 class="workout-title"></h4>
 						<%= form_tag("/filter_by_workout", method: "get") do %>
 						  <%= label_tag(:workout_search, "Search for workout type:") %>
-						  <%= text_field_tag :workout_search, params[:workout_search] %>
+						  <%= text_field_tag :workout_search, params[:workout_search], placeholder: "E.g. Swimming, Running" %>
 					  <%= submit_tag("Find me a workout!", class: "button round home-button") %>
 						<% end %>
 					</div>

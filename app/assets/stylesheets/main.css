@@ -97,7 +97,7 @@ body{
 	font-family: Avenir;
 }
 
-h1,h2,h3,h4,h5{
+h1,h2,h3,h4,h5,h6{
 	font-family: Avenir;
 	color: #697689;
 }
@@ -201,7 +201,7 @@ h1,h2,h3,h4,h5{
 }
 
 .fix-button{
-	width:200px;
+	width:225px;
 }
 
 .snag-button{
@@ -236,4 +236,17 @@ h1,h2,h3,h4,h5{
 	padding-left: 2px;
 	padding-right: 2px;
 	padding-bottom: 3px;
+}
+
+.notification-button{
+	margin-top: 5px;
+	background-color: white !important;
+	color:black;
+	border: #37D67A solid 1px !important;
+}
+
+.notification-button:hover{
+	background-color: #73EFA7 !important;
+	color: white !important;
+	border: #37D67A solid 1px !important;
 }

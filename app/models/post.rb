@@ -34,7 +34,7 @@ class Post < ActiveRecord::Base
 	end
 
 	def datetime
-		self.start.strftime('%m/%d/%Y (%H:%M %p)')
+		self.start.strftime('%m/%d/%Y (%l:%M %p)')
 	end
 
     def self.filter_by_workout(workout_search)

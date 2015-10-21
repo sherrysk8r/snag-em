@@ -28,3 +28,4 @@ $(function(){
       $(this).delay(1200).fadeOut();
     });
 });
+

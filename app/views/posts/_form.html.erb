@@ -9,8 +9,7 @@
 			</div>
 		</div>
 		  <%= f.input :topic %>
-		  <!-- Need to insert datetime picker -->
-		  <%= f.input :start, as: :string, start_date: Date.today, input_html: {class: "datepicker"}, label: "Workout Date" %>
+		  <%= f.input :start,  label: "Workout Date", as: :datetime %>
 		  <%= f.input :expected_duration_hr, label: "Expected Duration (Hour)" %>
 		  <%= f.input :expected_duration_min, label: "Expected Duration (Min)" %>
 		  <%= f.input :details %>

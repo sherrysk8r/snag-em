@@ -24,7 +24,7 @@
         </div>
         <div class="row workout-show">
           <div class="small-12 columns">
-            <p><%= @post.details %></p>
+            <p><%= @post.details.empty? ? "No details yet." : @post.details %></p>
           </div>
           <div class="small-12 columns">
             <p>Estimated Difficulty: <%= @post.estimated_difficulty %></p>

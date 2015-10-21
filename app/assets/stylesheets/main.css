@@ -260,3 +260,7 @@ h1,h2,h3,h4,h5,h6{
 .sorting-category img {
 	margin-right: 25px;
 }
+
+.login-header{
+	padding-top: 20px;
+}

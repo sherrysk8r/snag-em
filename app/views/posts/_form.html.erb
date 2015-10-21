@@ -14,7 +14,7 @@
 		  <%= f.input :expected_duration_min, label: "Expected Duration (Min)" %>
 		  <%= f.input :details %>
 		  <%= f.input :cancelled %>
-		  <%= f.input :estimated_difficulty %>
+		  <%= f.input :estimated_difficulty, collection: 1..10 %>
 		  <%= f.button :submit, :class => "round tagalong-button fix-button" %>
 		  <%= link_to "Back", posts_path, :class => 'button round snag-button fix-button' %>
 		<% end %>

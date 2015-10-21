@@ -12,7 +12,9 @@
     <p class="text-center"><b>Phone</b>: <%= number_to_phone(@user.phone) %>
     </p>
     <p class="text-center">
+      <% unless @user.about_me.empty? %>
       <b>About Me</b>: <%= @user.about_me %>
+      <% end %>
     </p>
   </div>
   <div class="small-12 medium-8 columns">
@@ -28,7 +30,7 @@
         <% else %>
           <ul>
             <% @user_upcoming_tagalongs.each do |tagalong| %>
-              <li><%= tagalong.post.title %>  @  <%= tagalong.post.datetime %>) <br>
+              <li><%= tagalong.post.title %>  @  <%= tagalong.post.datetime %> <br>
                   Contact <%= tagalong.post.user.first_name %> at <%= number_to_phone(tagalong.post.user.phone) %>
               </li>
             <% end %>

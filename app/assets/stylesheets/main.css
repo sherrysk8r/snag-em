@@ -177,6 +177,7 @@ h1,h2,h3,h4,h5,h6{
 	padding-top: 2em;
 }
 
+<<<<<<< HEAD
 .next-icon{
 	display: table-cell;
 	vertical-align: middle;
@@ -249,4 +250,13 @@ h1,h2,h3,h4,h5,h6{
 	background-color: #73EFA7 !important;
 	color: white !important;
 	border: #37D67A solid 1px !important;
+}
+
+.sorting-category {
+	padding: 20px;
+	font-size: 18px;
+}
+
+.sorting-category img {
+	margin-right: 25px;
 }

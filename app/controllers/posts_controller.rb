@@ -38,7 +38,7 @@ class PostsController < ApplicationController
   def create
     authorize! :create, Post
     params[:post][:owner_id] = current_user.id
-    params[:post][:date] = Chronic.parse(post_params[:date])
+    params[:post][:start] = Chronic.parse(post_params[:start])
   	
     @post = Post.new(post_params)
   	

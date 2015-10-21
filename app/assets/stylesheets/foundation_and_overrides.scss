@@ -1521,11 +1521,21 @@ div.post_expected_duration_min{
 
  div.notice{
   margin-left: 0;
-  background-color: #00FF00;
   opacity: .8;
   padding: 5px;
+  background-color: $primary-color;
+  color: white;
  }
 
 .notificationsToApprove{
   background-color: red !important;
+ }
+
+ #myTagalongs{
+ 	background-color: transparent;
+ 	border: none;
+ }
+
+ .tagalongToggle{
+ 	margin-top: 10px;
  }

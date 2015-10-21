@@ -36,7 +36,7 @@ class TagalongsController < ApplicationController
     	@tagalong = Tagalong.find params[:id]
 	    if @tagalong.update(tagalong_params)
 	    	#we aren't going to redirect to tagalong, want to stay on post page
-	    	redirect_to posts_path, notice: 'Congrats! You\'ve succesfully updated your tagalongs.'
+	    	redirect_to post_path(@tagalong.post), notice: 'Congrats! You\'ve succesfully updated your tagalongs.'
 	    else
 	    	render action: 'edit'
 	    end

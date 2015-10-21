@@ -24,7 +24,7 @@
         </div>
         <div class="row workout-show">
           <div class="small-12 columns">
-            <p><%= @post.details.empty? ? "No details yet." : @post.details %></p>
+            <p><%= @post.details.nil? || @post.details.empty? ? "No details yet." : @post.details %></p>
           </div>
           <div class="small-12 columns">
             <p>Estimated Difficulty: <%= @post.estimated_difficulty %></p>
@@ -39,18 +39,21 @@
             <% if @post.tagalongs.length != 0 %>
             <h4><b>Tagalongs</b></h4>
             <% end %>
+
+            <table id="myTagalongs">
             <% @post.tagalongs.each do |tagalong| %>
-              <div style="">
-                <p><%= tagalong.user.first_name %> <%= tagalong.user.last_name%></p>
-                <% if current_user.id == @post.owner_id %> 
+              <tr>
+                <td><%= tagalong.user.proper_name %></td>
+                <td>Showed Up? <%= tagalong.showed_up ? "Yes" : "No" %></td>
+                <td><% if current_user.id == @post.owner_id %> 
                   <%= simple_form_for tagalong do |f| %>
-                    <p>Showed Up? <%= tagalong.showed_up %>
                       <%= f.hidden_field :showed_up, value: !tagalong.showed_up %>
-                    <%= f.button :submit, value: "Toggle Showed Up" %> </p>
+                    <%= f.button :submit, value: "Toggle Showed Up", class: "tiny round tagalongToggle" %> </td>
                   <% end %>
                 <% end %>
-              </div>
+              </tr>
             <% end %>
+            </table>
 
             <% if !(Tagalong.exists?(:user_id => current_user.id, :post_id => @post.id )) && current_user.id != @post.owner_id %>
               <%= render partial: "addtagalong_form", locals: { post: @post} %>

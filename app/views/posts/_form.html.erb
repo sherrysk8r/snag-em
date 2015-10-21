@@ -1,7 +1,13 @@
 <div class="row">
-	<div class="small-12 columns">
+	<div class="small-12 columns section-header">
+        <h4 class="avenir-header">Post a Workout</h4>
+     </div>
 		<%= simple_form_for @post do |f| %>
-		  <%= f.input :title %>
+		<div class="row">
+			<div class="small-12 columns">
+			  <%= f.input :title %>
+			</div>
+		</div>
 		  <%= f.input :topic %>
 		  <!-- Need to insert datetime picker -->
 		  <%= f.input :start, as: :string, start_date: Date.today, input_html: {class: "datepicker"}, label: "Start Date and Time" %>
@@ -10,9 +16,8 @@
 		  <%= f.input :details %>
 		  <%= f.input :cancelled %>
 		  <%= f.input :estimated_difficulty %>
-		  <%= f.button :submit %>
+		  <%= f.button :submit, :class => "round tagalong-button fix-button" %>
+		  <%= link_to "Back", posts_path, :class => 'button round snag-button fix-button' %>
 		<% end %>
-	</div>
 </div>
-<%= link_to "Back", posts_path %>
 

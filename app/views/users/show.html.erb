@@ -6,70 +6,78 @@
     <% else %>
       <p class="text-center"><%= image_tag @user.photo_url, :class => 'img-circle'%></p>
     <% end %>
-    <p>
+    <p class="text-center">
       <b>Email</b>: <%= mail_to @user.email, @user.email, encode: "javascript" %>
     </p>
-    <p><b>Phone</b>: <%= number_to_phone(@user.phone) %>
+    <p class="text-center"><b>Phone</b>: <%= number_to_phone(@user.phone) %>
     </p>
-    <p>
+    <p class="text-center">
       <b>About Me</b>: <%= @user.about_me %>
     </p>
   </div>
   <div class="small-12 medium-8 columns">
+  <ul class="tabs" data-tab>
+    <li class="tab-title active"><a href="#panel1">My Tagalongs</a></li>
+    <li class="tab-title"><a href="#panel2">My Events</a></li>
+  </ul>
+  <div class="tabs-content">
+    <div class="content active" id="panel1">
       <p><b>Upcoming Tagalongs:</b>
-    <% if @user_upcoming_tagalongs.empty? %>
-      &nbsp;&nbsp;<em>No scheduled tagalongs at this time.</em> Do you want to <%=link_to "schedule", new_post_path %> one? 
-    <% else %>
-      <ul>
-        <% @user_upcoming_tagalongs.each do |tagalong| %>
-          <li><%= tagalong.post.title %>  @  <%= tagalong.post.datetime %>) <br>
-              Contact <%= tagalong.post.user.first_name %> at <%= number_to_phone(tagalong.post.user.phone) %>
-          </li>
+        <% if @user_upcoming_tagalongs.empty? %>
+          &nbsp;&nbsp;<em>No scheduled tagalongs at this time.</em> Do you want to <%=link_to "schedule", new_post_path %> one? 
+        <% else %>
+          <ul>
+            <% @user_upcoming_tagalongs.each do |tagalong| %>
+              <li><%= tagalong.post.title %>  @  <%= tagalong.post.datetime %>) <br>
+                  Contact <%= tagalong.post.user.first_name %> at <%= number_to_phone(tagalong.post.user.phone) %>
+              </li>
+            <% end %>
+          </ul>
         <% end %>
-      </ul>
-    <% end %>
-  </p>
+      </p>
 
-  <p><b>Past Tagalongs:</b>
-    <% if @user_past_tagalongs.empty? %>
-      &nbsp;&nbsp;<em>No past workouts at this time.</em>
-    <% else %>
-      <ul>
-        <% @user_past_tagalongs.each do |tagalong| %>
-              <li><%= tagalong.post.title %>  @  <%= tagalong.post.datetime %></li>
-              <% if tagalong.review != nil %>
-                <%= render :partial => "show_review", locals:{ tagalong: tagalong} %>
-              <% else %>
-                <%= render :partial => "review_form", locals: { tagalong: tagalong} %>
-              <% end %>
+      <p><b>Past Tagalongs:</b>
+        <% if @user_past_tagalongs.empty? %>
+          &nbsp;&nbsp;<em>No past workouts at this time.</em>
+        <% else %>
+          <ul>
+            <% @user_past_tagalongs.each do |tagalong| %>
+                  <li><%= tagalong.post.title %>  @  <%= tagalong.post.datetime %></li>
+                  <% if tagalong.review != nil %>
+                    <%= render :partial => "show_review", locals:{ tagalong: tagalong} %>
+                  <% else %>
+                    <%= render :partial => "review_form", locals: { tagalong: tagalong} %>
+                  <% end %>
+            <% end %>
+          </ul>
         <% end %>
-      </ul>
-    <% end %>
-  </p>
-
-
-  <p><b>Upcoming Events:</b>
-    <% if @user_upcoming_posts.empty? %>
-      &nbsp;&nbsp;<em>No scheduled workouts at this time.</em> Do you want to <%=link_to "schedule", new_post_path %> one? 
-    <% else %>
-      <ul>
-        <% @user_upcoming_posts.each do |post| %>
-          <li><%= post.title %>  @  <%= post.datetime %> </li>
-        <%end %>
-      </ul>
-    <% end %>
-  </p>
-
-  <p><b>Past Events:</b>
-    <% if @user_past_posts.empty? %>
-      &nbsp;&nbsp;<em>No past workouts at this time.</em>
-    <% else %>
-      <ul>
-        <% @user_past_posts.each do |post| %>
-          <li><%= post.title %>  @  <%= post.datetime %></li>
+      </p>
+    </div>
+    <div class="content" id="panel2">
+      <p><b>Upcoming Events:</b>
+        <% if @user_upcoming_posts.empty? %>
+          &nbsp;&nbsp;<em>No scheduled workouts at this time.</em> Do you want to <%=link_to "schedule", new_post_path %> one? 
+        <% else %>
+          <ul>
+            <% @user_upcoming_posts.each do |post| %>
+              <li><%= post.title %>  @  <%= post.datetime %> </li>
+            <%end %>
+          </ul>
         <% end %>
-      </ul>
-    <% end %>
-  </p>
+      </p>
+
+      <p><b>Past Events:</b>
+        <% if @user_past_posts.empty? %>
+          &nbsp;&nbsp;<em>No past workouts at this time.</em>
+        <% else %>
+          <ul>
+            <% @user_past_posts.each do |post| %>
+              <li><%= post.title %>  @  <%= post.datetime %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </p>
+    </div>
+  </div>
   </div>
 </div>

@@ -14,7 +14,7 @@
 	border: #EF4836 solid 1px !important;
 	color: white !important;
 	padding-top: .3rem !important;
-	font-family: Montserrat !important;
+	font-family: Montserrat, Avenir, Helvetica !important;
 }
 
 .notifications:hover{
@@ -22,7 +22,7 @@
 	border: #EF4836 solid 1px !important;
 	color: #EF4836 !important;
 	padding-top: .3rem !important;
-	font-family: Montserrat !important;
+	font-family: Montserrat, Avenir, Helvetica !important;
 }
 
 .log-in{
@@ -30,7 +30,7 @@
 	border: #697689 solid 1px !important;
 	color: #37D67A !important;
 	padding-top: .3rem !important;
-	font-family: Montserrat !important;
+	font-family: Montserrat, Avenir, Helvetica !important;
 }
 
 .log-in:hover{
@@ -42,7 +42,7 @@
 	background-color: transparent !important;
 	border: white solid 1px !important;
 	padding-top: .3rem !important;
-	font-family: Montserrat !important;
+	font-family: Montserrat, Avenir, Helvetica !important;
 }
 
 .sign-up:hover{
@@ -122,7 +122,7 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .mont {
-	font-family: Montserrat !important;
+	font-family: Montserrat, Avenir, Helvetica !important;
 }
 
 .profile-page .columns{
@@ -193,7 +193,7 @@ h1,h2,h3,h4,h5,h6{
 	background-color:#37D67A !important;
 	border: #37D67A solid 1px !important;
 	color: white !important;
-	font-family: Montserrat !important;
+	font-family: Montserrat, Avenir, Helvetica !important;
 }
 
 .tagalong-button:hover{
@@ -209,7 +209,7 @@ h1,h2,h3,h4,h5,h6{
 	background-color:#697689 !important;
 	border: #697689 solid 1px !important;
 	color: white !important;
-	font-family: Montserrat !important;
+	font-family: Montserrat, Avenir, Helvetica !important;
 }
 
 .snag-button:hover{
@@ -221,7 +221,7 @@ h1,h2,h3,h4,h5,h6{
 	background-color: #F7F7F7 !important;
 	border: #37D67A solid 1px !important;
 	color: #37D67A !important;
-	font-family: Montserrat !important;
+	font-family: Montserrat, Avenir, Helvetica !important;
 	margin-top: 10px;
 }
 

@@ -1,5 +1,25 @@
-<h2>Find a Workout</h2>
-
-<div><img alt="Many" src="assets/many.png" /><%= link_to "View all workouts", posts_path %></div>
-<div><img alt="Walking" src="assets/walking.png" /><%= link_to "Filter by workout type", 'filter_by_workout' %></div>
-<div><img alt="Clock" src="assets/clock.png" /><%= link_to "Find a time that works for you", 'filter_by_time' %></div>
+<div class="row full-width">
+	<div class="small-12 medium-4 columns my-events">
+		<h2>Find a Workout</h2>
+	</div>
+	<div class="row">
+		<div class="small-12 columns workout">
+			<div class="row workout-content">
+				<div class="small-12 columns">
+					<div>
+						<img alt="Many" src="assets/many.png" />
+						<h4 class="workout-title"><%= link_to "View all workouts", posts_path %></h4>
+					</div>
+					<div>
+						<img alt="Walking" src="assets/walking.png" />
+						<%= link_to "Filter by workout type", 'filter_by_workout' %>
+					</div>
+					<div>
+						<img alt="Clock" src="assets/clock.png" />
+						<%= link_to "Find a time that works for you", 'filter_by_time' %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

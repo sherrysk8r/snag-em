@@ -39,7 +39,8 @@ class Post < ActiveRecord::Base
 
     def self.filter_by_workout(workout_search)
       if workout_search
-        self.where("topic LIKE ?", workout_search)
+      	search = '%' + workout_search + '%'
+        self.where("topic LIKE ?", search)
       else
           []
       end

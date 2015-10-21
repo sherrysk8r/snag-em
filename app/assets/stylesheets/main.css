@@ -9,6 +9,22 @@
 	width: 75%;
 }
 
+.notifications{
+	background-color:#EF4836 !important;
+	border: #EF4836 solid 1px !important;
+	color: white !important;
+	padding-top: .3rem !important;
+	font-family: Montserrat !important;
+}
+
+.notifications:hover{
+	background-color:white !important;
+	border: #EF4836 solid 1px !important;
+	color: #EF4836 !important;
+	padding-top: .3rem !important;
+	font-family: Montserrat !important;
+}
+
 .log-in{
 	background-color:#697689 !important;
 	border: #697689 solid 1px !important;
@@ -79,6 +95,11 @@
 body{
 	background-color: #F7F7F7;
 	font-family: Avenir;
+}
+
+h1,h2,h3,h4,h5{
+	font-family: Avenir;
+	color: #697689;
 }
 
 .img-circle {
@@ -154,4 +175,65 @@ body{
 
 .workout-show{
 	padding-top: 2em;
+}
+
+.next-icon{
+	display: table-cell;
+	vertical-align: middle;
+	padding-top: 20px;
+	height: 70px;
+}
+
+.workout-cell{
+	height: 175px;
+}
+
+.tagalong-button{
+	background-color:#37D67A !important;
+	border: #37D67A solid 1px !important;
+	color: white !important;
+	font-family: Montserrat !important;
+}
+
+.tagalong-button:hover{
+	color: #37D67A !important;
+	background-color:transparent !important;
+}
+
+.fix-button{
+	width:200px;
+}
+
+.snag-button{
+	background-color:#697689 !important;
+	border: #697689 solid 1px !important;
+	color: white !important;
+	font-family: Montserrat !important;
+}
+
+.snag-button:hover{
+	color: #697689 !important;
+	background-color:transparent !important;
+}
+
+.new-button{
+	background-color: #F7F7F7 !important;
+	border: #37D67A solid 1px !important;
+	color: #37D67A !important;
+	font-family: Montserrat !important;
+	margin-top: 10px;
+}
+
+.new-button:hover{
+	color: #37D67A !important;
+	background-color:#697689 !important;
+	border: #D7D7D7 solid 1px !important;
+}
+
+.plus-button{
+	width: 20px;
+	height: auto;
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-bottom: 3px;
 }

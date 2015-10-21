@@ -36,14 +36,12 @@
     <% else %>
       <ul>
         <% @user_past_tagalongs.each do |tagalong| %>
-            <div style="border:1px solid black">
               <li><%= tagalong.post.title %>  @  <%= tagalong.post.datetime %></li>
               <% if tagalong.review != nil %>
                 <%= render :partial => "show_review", locals:{ tagalong: tagalong} %>
               <% else %>
                 <%= render :partial => "review_form", locals: { tagalong: tagalong} %>
               <% end %>
-            </div>
         <% end %>
       </ul>
     <% end %>

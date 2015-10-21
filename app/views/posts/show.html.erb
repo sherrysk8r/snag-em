@@ -36,8 +36,11 @@
             <% end %>
           </div>
           <div class="small-12 columns">
+            <% if @post.tagalongs.length != 0 %>
+            <h4><b>Tagalongs</b></h4>
+            <% end %>
             <% @post.tagalongs.each do |tagalong| %>
-              <div style="border:1px solid black">
+              <div style="">
                 <p><%= tagalong.user.first_name %> <%= tagalong.user.last_name%></p>
                 <% if current_user.id == @post.owner_id %> 
                   <%= simple_form_for tagalong do |f| %>
@@ -52,8 +55,8 @@
             <% if !(Tagalong.exists?(:user_id => current_user.id, :post_id => @post.id )) && current_user.id != @post.owner_id %>
               <%= render partial: "addtagalong_form", locals: { post: @post} %>
             <% end %>
+            <%= link_to "Back", posts_path, :class => 'button round snag-button fix-button' %>
           </div>
-          <%= link_to "Back", posts_path %>
         </div>
       </div>
     </div>
